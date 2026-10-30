@@ -3,13 +3,21 @@ name: Validate
 on:
   push:
   pull_request:
+  release:
+    types: [published]
   workflow_dispatch:
+    inputs:
+      release_tag:
+        description: 'Published release to verify with real online installers (leave empty for checkout tests)'
+        required: false
+        default: ''
 
 permissions:
   contents: read
 
 jobs:
   helpers:
+    if: github.event_name != 'release' && inputs.release_tag == ''
     name: Python 3.12 / ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     timeout-minutes: 15
@@ -38,3 +46,34 @@ jobs:
         run: python install.py --agent codex claude-code cursor gemini opencode copilot --scope project --project build/install-smoke
       - name: Check installed adapters
         run: python install.py --agent codex claude-code cursor gemini opencode copilot --scope project --project build/install-smoke --check
+
+  online-install:
+    if: github.event_name == 'release' || inputs.release_tag != ''
+    name: Online install / ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    env:
+      JFK_RELEASE_TAG: ${{ github.event.release.tag_name || inputs.release_tag }}
+      PYTHONUTF8: '1'
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Windows PowerShell 5.1 online pipeline
+        if: runner.os == 'Windows'
+        shell: powershell
+        run: irm "https://raw.githubusercontent.com/Ychris12138/journal-figure-kit/$env:JFK_RELEASE_TAG/install.ps1" | iex
+      - name: Native Bash online pipeline
+        if: runner.os != 'Windows'
+        shell: bash
+        run: curl -fsSL "https://raw.githubusercontent.com/Ychris12138/journal-figure-kit/$JFK_RELEASE_TAG/install.sh" | /bin/bash
+      - name: Git Bash online pipeline and backed-up upgrade
+        if: runner.os == 'Windows'
+        shell: bash
+        run: curl -fsSL "https://raw.githubusercontent.com/Ychris12138/journal-figure-kit/$JFK_RELEASE_TAG/install.sh" | bash
+      - name: Check the installed files and environment
+        run: python -c "import os; from urllib.request import urlopen; exec(urlopen('https://raw.githubusercontent.com/Ychris12138/journal-figure-kit/'+os.environ['JFK_RELEASE_TAG']+'/install.py', timeout=60).read())" --quick --check
