@@ -16,6 +16,29 @@ The folder `journal-matplotlib` is created under the selected root. For Codex us
 
 ## Quick installation
 
+### Short install with the Skills CLI
+
+With Node.js 22.20+ and Git available:
+
+```bash
+npx skills add Ychris12138/journal-figure-kit
+```
+
+Select your agent interactively, or append `-a codex` to choose Codex. The default scope is the current project. This shorthand follows the repository's default branch. For a fixed version, use `https://github.com/Ychris12138/journal-figure-kit/tree/v0.10.0/skills/journal-matplotlib` as the source instead.
+
+| Capability | `npx skills add` | This project's Python installer |
+|---|---|---|
+| Complete skill scripts and references | Copies the canonical skill | Copies the skill and adapts host metadata |
+| Python environment and dependencies | Use an existing environment | Optional isolated setup with `--with-deps` |
+| Explicit invocation | Preserves Codex metadata and shared instructions | Also adds native manual-invocation fields for Claude Code, Cursor and VS Code |
+| Update behavior | Managed by the Skills CLI | Explicit `--update`, ZIP backup and runtime record preservation |
+
+These are separate installation managers. If an existing global installation was created with the Python installer, continue updating it with that installer; avoid a second same-named global copy in a different discovery directory. The Skills CLI uses its own agent names, such as `gemini-cli` and `github-copilot`; they differ from this installer's `gemini` and `copilot` aliases.
+
+Validated on 2026-10-30 with Skills CLI 1.7.4 and Node.js 24.14.1: an isolated project install for Codex using `--copy` succeeded, all 33 skill files matched after normalizing Windows Git line endings, and Codex's explicit-invocation metadata was preserved. The CLI did not create a Python environment. Interactive picker behavior and other hosts were not exercised in this check. [Official commands](https://github.com/vercel-labs/skills/blob/main/docs/commands.md) · [CLI prerequisites](https://github.com/vercel-labs/skills#readme).
+
+### Full setup with the Python installer
+
 Use Python 3.12 and paste this command into PowerShell; on macOS/Linux replace `python` with `python3`:
 
 ```bash

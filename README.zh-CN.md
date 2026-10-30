@@ -14,7 +14,21 @@
 
 <a id="quick-install"></a>
 
-## 快速安装：复制一条命令
+## 快速安装
+
+### 简短安装：安装 skill
+
+已有 Node.js 22.20+ 和 Git 时，运行：
+
+```bash
+npx skills add Ychris12138/journal-figure-kit
+```
+
+按提示选择使用的 agent，默认安装到当前项目。想直接选择 Codex，可在末尾加 `-a codex`。
+
+已有 Python 作图环境时，这是最短的入口。[Skills CLI](https://github.com/vercel-labs/skills#readme) 会复制通用 skill，不配置 Python 依赖，也不执行本项目的专用适配和升级备份流程；[具体差异](docs/agents.md#short-install-with-the-skills-cli)。需要这些功能时，使用下面的完整安装。
+
+### 完整安装：同时配置 skill 和 Python 依赖
 
 准备好 **Python 3.12**，将下面的命令粘贴到终端即可。**不用手动下载或保存安装文件，也不需要 Git、Node.js。**
 

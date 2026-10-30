@@ -14,6 +14,20 @@ Built for physics, chemistry and molecular simulation workflows, with installati
 
 ## Quick install
 
+### Short command: install the skill
+
+With Node.js 22.20+ and Git available, run:
+
+```bash
+npx skills add Ychris12138/journal-figure-kit
+```
+
+Follow the prompts to choose your agent. It installs into the current project by default. To choose Codex directly, append `-a codex`.
+
+This is the shortest route when you already have a Python plotting environment. The [Skills CLI](https://github.com/vercel-labs/skills#readme) copies the canonical skill; it does not configure Python dependencies or run this project's host-specific adapters and update backups. See the [comparison](docs/agents.md#short-install-with-the-skills-cli). Use the full setup below when those features are needed.
+
+### Full setup: install the skill and Python dependencies
+
 With **Python 3.12** installed, paste one command into your terminal. No manual file download, saved installer, Git or Node.js is needed.
 
 **Windows · PowerShell**
