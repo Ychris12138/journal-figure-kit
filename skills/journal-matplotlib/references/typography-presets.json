@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "checked": "2026-10-30",
+  "scope": "Local main-figure typography defaults at final placement size; not publisher certification. Width/stage/role remain separate contracts.",
+  "profiles": {
+    "nature": {
+      "label": "Nature", "body_pt": 7, "tick_pt": 7, "panel_pt": 8,
+      "body_range_pt": [5, 7], "panel_required_pt": 8,
+      "panel_format": "a", "panel_weight": "bold",
+      "status": "Official guide read; panel exception in official artwork PDF",
+      "sources": [
+        {"url": "https://research-figure-guide.nature.com/figures/building-and-exporting-figure-panels/", "locator": "Figure sizing; Fonts", "finding": "5-7 pt at final size; production may reduce figures"},
+        {"url": "https://www.nature.com/documents/nature-final-artwork.pdf#page=1", "locator": "p.1, Fonts and labels", "finding": "8 pt bold upright lowercase panel labels"}
+      ]
+    },
+    "nature-communications": {
+      "label": "Nature Communications", "body_pt": 8, "tick_pt": 8, "panel_pt": 8,
+      "body_range_pt": [5, 8], "panel_format": "a", "panel_weight": "bold",
+      "status": "Older official baseline (2019); current title-specific rules require recheck; panel size is local",
+      "sources": [{"url": "https://www.nature.com/documents/ncomms-submission-guide.pdf#page=1", "locator": "p.1, Figures, final-size preparation bullet", "finding": "Optimal font size 5-8 pt at print size; PDF dated 2019-05-03"}]
+    },
+    "prl": {
+      "label": "Physical Review Letters", "body_pt": 9, "tick_pt": 9, "panel_pt": 10,
+      "body_range_pt": [null, null], "glyph_min_mm": 2,
+      "panel_format": "(a)", "panel_weight": "normal",
+      "status": "Official APS guide read; 9 pt is a local starting point, not a verified 2 mm glyph-height pass",
+      "sources": [{"url": "https://res.cloudinary.com/apsphysics/image/upload/v1736779890/APS_Journals_Style_Guide_Authors_Nov2024_ua91lv.pdf#page=43", "locator": "PDF p.43 (printed p.42), II.S.1 Content", "finding": "Lettering height and symbol width at least 2 mm on journal page"}]
+    },
+    "pre": {
+      "label": "Physical Review E", "body_pt": 9, "tick_pt": 9, "panel_pt": 10,
+      "body_range_pt": [null, null], "glyph_min_mm": 2,
+      "panel_format": "(a)", "panel_weight": "normal",
+      "status": "Official APS guide read; same artwork source as PRL; actual glyph-height check needed",
+      "sources": [{"url": "https://res.cloudinary.com/apsphysics/image/upload/v1736779890/APS_Journals_Style_Guide_Authors_Nov2024_ua91lv.pdf#page=43", "locator": "PDF p.43 (printed p.42), II.S.1 Content", "finding": "Lettering height and symbol width at least 2 mm on journal page"}]
+    },
+    "jcp": {
+      "label": "The Journal of Chemical Physics", "body_pt": 9, "tick_pt": 8.5, "panel_pt": 10,
+      "body_range_pt": [8, null], "panel_format": "(a)", "panel_weight": "normal",
+      "status": "Official AIP instructions read; 8 pt minimum, 8.5-9 pt working sizes are local",
+      "sources": [{"url": "https://publishing.aip.org/resources/researchers/author-instructions/", "locator": "Preparing Your Graphics > Guidelines > For all other journals", "finding": "Legends and labels minimum 8-point; prepare at 100% reproduction"}]
+    },
+    "jpcl": {
+      "label": "The Journal of Physical Chemistry Letters", "body_pt": 8, "tick_pt": 8, "panel_pt": 9,
+      "body_range_pt": [4.5, null], "panel_format": "(a)", "panel_weight": "bold",
+      "status": "Official ACS guide read (updated 2026-10-08); 8 pt working size and panel styling are local",
+      "sources": [{"url": "https://researcher-resources.acs.org/publish/author_guidelines?coden=jpclcd", "locator": "Appendix 2: Preparing Graphics > Size", "finding": "Lettering at least 4.5 pt in final published format; minimum is not preferred size"}]
+    },
+    "pnas": {
+      "label": "PNAS", "body_pt": 9, "tick_pt": 8, "panel_pt": 10,
+      "body_range_pt": [6, 12], "panel_format": "A", "panel_weight": "bold",
+      "status": "6-12 pt retained from 2026-10-28 source record; live page returned 403 on 2026-10-30; recheck; working sizes local",
+      "sources": [{"url": "https://www.pnas.org/author-center/submitting-your-manuscript", "locator": "Figures; see journals.md dated verification record", "finding": "6-12 pt after reduction (prior verified record, not refreshed in this check)"}]
+    },
+    "science": {
+      "label": "Science", "body_pt": 8, "tick_pt": 8, "panel_pt": 9,
+      "body_range_pt": [null, null], "panel_format": "A", "panel_weight": "bold",
+      "status": "Draft only: current official instructions returned 403; 8/9 pt entirely local; no verified journal font limit",
+      "sources": [{"url": "https://www.science.org/content/page/instructions-preparing-revised-manuscript", "locator": "Current figure instructions unavailable in this check", "finding": "Do not claim current compliance from this preset"}]
+    }
+  }
+}

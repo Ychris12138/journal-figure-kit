@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "title": "配色选择 v2",
+  "cards": [
+    {
+      "id": "A",
+      "revision": 1,
+      "title": "柔和三色",
+      "kind": "categorical",
+      "mapping": {
+        "Group 1": "#7CB48B",
+        "Group 2": "#E4B185",
+        "Group 3": "#6F91BD"
+      },
+      "background": "#FFFFFF",
+      "text": "#222222",
+      "reference": "#777777",
+      "band_alpha": 0.16,
+      "source": {
+        "type": "paper_approximate",
+        "title": "Intrinsic physicochemical activity at microplastic-water interfaces",
+        "url": "https://doi.org/10.1038/s41586-026-11141-y",
+        "figure": "Fig. 3a–b",
+        "version": "PMC 收录期刊图",
+        "image_url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC13668708.1/41586_2026_11141_Fig3_HTML.webp",
+        "method": "人工确认色相；所选面板 RGB 像素按通道分箱去除零散像素，再取近邻代表色。非作者源代码 HEX，非完整色标。",
+        "checked_on": "2026-10-28"
+      },
+      "observed_colors": [
+        "#7CB48B",
+        "#E4B185",
+        "#6F91BD"
+      ],
+      "changes": "保留论文近似三色；Group 1–3 是示例，正式使用前映射真实体系。",
+      "use": "三体系曲线、散点与误差带；图中数据均为合成示例。",
+      "caveat": "杏橙细线在白底较浅；保留 marker 与线型。"
+    },
+    {
+      "id": "B",
+      "revision": 1,
+      "title": "冷色三色",
+      "kind": "categorical",
+      "mapping": {
+        "Group 1": "#392D7D",
+        "Group 2": "#328272",
+        "Group 3": "#915C9C"
+      },
+      "background": "#FFFFFF",
+      "text": "#222222",
+      "reference": "#777777",
+      "band_alpha": 0.16,
+      "source": {
+        "type": "paper_approximate",
+        "title": "Intrinsic hydrophobicity of IDP-based biomolecular condensates drives their partial drying on membrane surfaces",
+        "url": "https://doi.org/10.1063/5.0253522",
+        "figure": "Fig. 2a–b",
+        "version": "PMC 收录期刊图",
+        "image_url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC11919390.1/JCPSA6-000162-115101_1-g002.jpg",
+        "method": "人工确认色相；所选面板 RGB 像素按通道分箱去除零散像素，再取近邻代表色。非作者源代码 HEX，非完整色标。",
+        "checked_on": "2026-10-28"
+      },
+      "observed_colors": [
+        "#392D7D",
+        "#338DDB",
+        "#328272",
+        "#94B522",
+        "#915C9C"
+      ],
+      "changes": "从原五色取靛蓝、墨绿、灰紫；Group 1–3 是示例，需映射真实体系。",
+      "use": "三体系曲线、散点与误差带；图中数据均为合成示例。",
+      "caveat": "深色曲线配浅色带；紫与靛蓝用不同 marker。"
+    },
+    {
+      "id": "C",
+      "revision": 1,
+      "title": "冷暖三色",
+      "kind": "categorical",
+      "mapping": {
+        "Group 1": "#DBA42B",
+        "Group 2": "#BD7CA2",
+        "Group 3": "#1B7AAC"
+      },
+      "background": "#FFFFFF",
+      "text": "#222222",
+      "reference": "#777777",
+      "band_alpha": 0.16,
+      "source": {
+        "type": "paper_approximate",
+        "title": "Many-body interactions resolve halide distribution at the air/water interface",
+        "url": "https://doi.org/10.1038/s41467-026-77205-9",
+        "figure": "Fig. 3A–H",
+        "version": "PMC 收录期刊图",
+        "image_url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC13620159.1/41467_2026_77205_Fig3_HTML.webp",
+        "method": "人工确认色相；所选面板 RGB 像素按通道分箱去除零散像素，再取近邻代表色。非作者源代码 HEX，非完整色标。",
+        "checked_on": "2026-10-28"
+      },
+      "observed_colors": [
+        "#DBA42B",
+        "#63B2DC",
+        "#BD7CA2",
+        "#1B7AAC",
+        "#D37B34"
+      ],
+      "changes": "从原五色取赭黄、灰粉、深蓝；Group 1–3 是示例，需映射真实体系。",
+      "use": "三体系曲线、散点与误差带；图中数据均为合成示例。",
+      "caveat": "赭黄用于细线时检查对比；阴影保持较低不透明度。"
+    }
+  ]
+}

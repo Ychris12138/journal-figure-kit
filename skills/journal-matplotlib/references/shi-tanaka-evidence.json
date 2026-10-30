@@ -1,0 +1,302 @@
+[
+  {
+    "code": "ST1",
+    "year": 2018,
+    "journal": "PNAS",
+    "authors": "Rui Shi, John Russo, Hajime Tanaka",
+    "title": "Origin of the emergent fragile-to-strong transition in supercooled water",
+    "doi": "10.1073/pnas.1807821115",
+    "figure": "Fig. 3A–B；参照 Fig. 2",
+    "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6156665/#fig03",
+    "version": "PMC 收录期刊图；核对正文与图注",
+    "seeds": [
+      "#000000",
+      "#B00000",
+      "#3333DD"
+    ],
+    "roi": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "roles": [
+      "平移易感性",
+      "转动易感性",
+      "拉伸指数 β"
+    ],
+    "observe": "黑圆、红方、蓝三角区分三种动力学量；图中区域另用浅绿、浅粉和窄亮绿带标出。",
+    "learn": "数据颜色和区域底色分工明确；圆、方、三角与线型提供第二层辨识。β 的蓝色轴标签与蓝色数据一致。",
+    "change": "可借鉴黑／红／蓝数据角色；宽底色不是误差带。新图可降低区域底色存在感，避免亮绿色带抢过数据。",
+    "caution": "双纵轴表达不同物理量，必须保留轴标与单位；不因配色相同就合并量纲。",
+    "palette": [
+      "#0B0B0B",
+      "#AA1313",
+      "#3243CD"
+    ],
+    "sample_roi_px": [
+      0,
+      0,
+      800,
+      292
+    ],
+    "sample_method": "人工确认物理角色和色相；指定图区 RGB 分箱后取邻近高频代表色。图像压缩和抗锯齿会影响数值；不是作者源代码 HEX。",
+    "checked_on": "2026-10-28",
+    "evidence_sha256": "e62f91fe97a638cb31afe9d91eb1922ca589cc5b120e2ee6d5901a865fec6d65",
+    "image_url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/9eff/6156665/008b89e5a5b9/pnas.1807821115fig03.jpg"
+  },
+  {
+    "code": "ST2",
+    "year": 2019,
+    "journal": "Science Advances",
+    "authors": "Rui Shi, Hajime Tanaka",
+    "title": "Distinct signature of local tetrahedral ordering in the scattering function of covalent liquids and glasses",
+    "doi": "10.1126/sciadv.aav3194",
+    "figure": "Fig. 2；参照 Fig. 4A–D",
+    "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6397023/#F2",
+    "version": "PMC 收录期刊图；核对正文与图注",
+    "seeds": [
+      "#FF0000",
+      "#0000FF",
+      "#000000"
+    ],
+    "roi": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "roles": [
+      "Si–Si",
+      "O–O",
+      "Si–O"
+    ],
+    "observe": "红实线、蓝虚线和黑点划线分别对应三个部分结构因子；对应特征峰的箭头与公式也用红、蓝。",
+    "learn": "这是最直接的物理角色配色：数据、峰位箭头、公式和示意图互相呼应，三色已经足够。",
+    "change": "适合部分 RDF、结构因子与峰归属；保留线型差异。Fig. 4 的多温曲线颜色次序不宜原样变成连续温标。",
+    "caution": "同一篇 Fig. 4C 的绿色表示分峰面积，含义与 Fig. 2 不同；必须逐图核对颜色用途。",
+    "palette": [
+      "#E20D0D",
+      "#0402DB",
+      "#010101"
+    ],
+    "sample_roi_px": [
+      0,
+      0,
+      440,
+      330
+    ],
+    "sample_method": "人工确认物理角色和色相；指定图区 RGB 分箱后取邻近高频代表色。图像压缩和抗锯齿会影响数值；不是作者源代码 HEX。",
+    "checked_on": "2026-10-28",
+    "evidence_sha256": "61bc4b7913a226e94b73ba9998dfc642b7c7a00a0470e46b2e9087c238f5457a",
+    "image_url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC6397023.1/aav3194-F2.jpg"
+  },
+  {
+    "code": "ST3",
+    "year": 2020,
+    "journal": "PNAS",
+    "authors": "Rui Shi, Hajime Tanaka",
+    "title": "The anomalies and criticality of liquid water",
+    "doi": "10.1073/pnas.2008426117",
+    "figure": "Fig. 3B–D；参照 Fig. 2 与 Fig. 4",
+    "source_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7959589/#fig03",
+    "version": "PMC 收录期刊图；核对正文与图注",
+    "seeds": [
+      "#0000FF",
+      "#8888FF",
+      "#FF8888",
+      "#FF0000"
+    ],
+    "roi": [
+      0.45,
+      0,
+      1,
+      1
+    ],
+    "roles": [
+      "较低温",
+      "中间温区冷侧",
+      "中间温区暖侧",
+      "较高温"
+    ],
+    "observe": "Fig. 3B–D 用蓝到浅色再到红表示温度递增，符号形状区分实验来源；温度值直接写在曲线附近。",
+    "learn": "颜色承担有序变量，符号承担来源，避免把每条曲线当作无序类别。",
+    "change": "借鉴冷蓝／暖红及直接标注；浅色中段在白底容易消失，可增加线宽或采用不经过纯白的有序梯度。",
+    "caution": "Fig. 2 的蓝／红对应高／低压力；不能把跨图的红蓝统一误读为温度。四个 HEX 只是近似取样点，不是完整色标。",
+    "palette": [
+      "#0101FD",
+      "#8D8CFD",
+      "#FD8C8C",
+      "#FC0202"
+    ],
+    "sample_roi_px": [
+      305,
+      0,
+      677,
+      658
+    ],
+    "sample_method": "人工确认物理角色和色相；指定图区 RGB 分箱后取邻近高频代表色。图像压缩和抗锯齿会影响数值；不是作者源代码 HEX。",
+    "checked_on": "2026-10-28",
+    "evidence_sha256": "21d89d84f544f1c6dbf597e4673c245b7c1bc4c5c0cf4bae984703e6170465f8",
+    "image_url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/e5ec/7959589/36f3b90a8f00/pnas.2008426117fig03.jpg"
+  },
+  {
+    "code": "ST4",
+    "year": 2023,
+    "journal": "Nature Communications",
+    "authors": "Rui Shi, Anthony J. Cooper, Hajime Tanaka",
+    "title": "Impact of hierarchical water dipole orderings on the dynamics of aqueous salt solutions",
+    "doi": "10.1038/s41467-023-40278-x",
+    "figure": "Fig. 2c、f；参照 Fig. 1 与 Fig. 3",
+    "source_url": "https://www.nature.com/articles/s41467-023-40278-x#Fig2",
+    "version": "PMC 更新后图注及期刊原图；已核对 2023-10-16 勘误",
+    "seeds": [
+      "#FF8000",
+      "#8000FF",
+      "#000000",
+      "#FF3333",
+      "#0080FF"
+    ],
+    "roi": [
+      0.67,
+      0,
+      1,
+      1
+    ],
+    "roles": [
+      "B > 0",
+      "B < 0",
+      "碱金属离子",
+      "碱土金属离子",
+      "铝离子"
+    ],
+    "observe": "Fig. 2c 用橙色五边形和紫色六边形区分 B 的正负；Fig. 2f 则用黑、红、蓝区分离子族。",
+    "learn": "离散机制分类与连续场采用不同编码；边界还用圈、方、三角，线与符号能跨热图保持可见。",
+    "change": "优先借鉴橙／紫二分类；连续热图要另定量纲、方向和中心，不能抽几种颜色就当作完整色标。",
+    "caution": "热图色标方向依物理量而异。勘误补充了 Fig. 3 的灰色球说明，分析采用修正版本。",
+    "correction_url": "https://www.nature.com/articles/s41467-023-42120-w",
+    "palette": [
+      "#FE7D01",
+      "#7C02FE",
+      "#020202",
+      "#F4423C",
+      "#1373E3"
+    ],
+    "sample_roi_px": [
+      503,
+      0,
+      750,
+      465
+    ],
+    "sample_method": "人工确认物理角色和色相；指定图区 RGB 分箱后取邻近高频代表色。图像压缩和抗锯齿会影响数值；不是作者源代码 HEX。",
+    "checked_on": "2026-10-28",
+    "evidence_sha256": "f290c235b8eaa5d22db3fe49e2d973eaa41cbf1bba9a05baa28b28a9cf4db2a4",
+    "image_url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC10406952.1/41467_2023_40278_Fig2_HTML.jpg"
+  },
+  {
+    "code": "ST5",
+    "year": 2026,
+    "journal": "Nature Communications",
+    "authors": "Jiaxing Yuan, Kun Qiu, Gang Sun, Hajime Tanaka",
+    "title": "Competing hydrogen-bond orders drive water’s anomalous surface tension",
+    "doi": "10.1038/s41467-026-69356-6",
+    "figure": "Fig. 2a–d；与 Fig. 1a 比较",
+    "source_url": "https://www.nature.com/articles/s41467-026-69356-6#Fig2",
+    "version": "PMC 收录期刊图；Tanaka 共同署名，Rui Shi 不在作者列表",
+    "seeds": [
+      "#000000",
+      "#0000FF",
+      "#FF8000"
+    ],
+    "roi": [
+      0,
+      0,
+      0.5,
+      0.5
+    ],
+    "roles": [
+      "total",
+      "S-state",
+      "ρ-state"
+    ],
+    "observe": "Fig. 2 采用总量黑色、S-state 蓝色、ρ-state 橙色，圆／方／三角随曲线在各面板重复。",
+    "learn": "很适合你的界面 profile 与总量分解：黑色保留给总量，两个分量用清晰的冷暖色。",
+    "change": "建议作为优先候选。但应在新项目全程固定角色映射；Fig. 1a 用 S-state 红、ρ-state 蓝，和 Fig. 2 不一致。",
+    "caution": "这里分析的是不同图之间的可视化一致性，不是对科学结论的质疑。不得照抄跨图换色。",
+    "palette": [
+      "#010101",
+      "#022DFE",
+      "#FE9301"
+    ],
+    "sample_roi_px": [
+      0,
+      0,
+      316,
+      214
+    ],
+    "sample_method": "人工确认物理角色和色相；指定图区 RGB 分箱后取邻近高频代表色。图像压缩和抗锯齿会影响数值；不是作者源代码 HEX。",
+    "checked_on": "2026-10-28",
+    "evidence_sha256": "bc63572a6e0bcbb4d0a50ecc4359b5fa6c62f8f1d7a205a0922744851bd80919",
+    "image_url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC12923668.1/41467_2026_69356_Fig2_HTML.jpg"
+  },
+  {
+    "code": "ST6",
+    "year": 2019,
+    "journal": "Nature Reviews Physics",
+    "authors": "Hajime Tanaka, Hua Tong, Rui Shi, John Russo",
+    "title": "Revealing key structural features hidden in liquids and glasses",
+    "doi": "10.1038/s42254-019-0053-3",
+    "figure": "Fig. 3a–b",
+    "source_url": "https://www.nature.com/articles/s42254-019-0053-3",
+    "version": "出版社公开原图与摘要；完整综述正文订阅受限",
+    "seeds": [
+      "#3B494B",
+      "#D81D0A",
+      "#007EAE",
+      "#F48600",
+      "#21C24B"
+    ],
+    "roi": [
+      0,
+      0,
+      1,
+      1
+    ],
+    "roles": [
+      "ζ 标记",
+      "ILSI",
+      "d5",
+      "RLSI",
+      "two-state model"
+    ],
+    "observe": "暗灰三角、红圆、蓝方、橙三角区分结构描述符；绿色曲线单独承担两态模型预测。ζ 在 a 中连线为黑色。",
+    "learn": "比纯红纯蓝更克制，仍保持清晰的色相差异；颜色、点型和模型曲线的角色分工都明确。",
+    "change": "适合结构指标对照与实验／模型比较；可保留红、蓝、灰主色，橙色作为第四类，绿色只作模型强调。",
+    "caution": "浅灰渐变底是原图视觉设计，不代表概率或误差；新图建议先用白底。红色线与圆点像素略有差别，HEX 只作近似代表。",
+    "palette": [
+      "#3C474B",
+      "#D32414",
+      "#007AB7",
+      "#EA7B00",
+      "#2EB755"
+    ],
+    "sample_roi_px": [
+      0,
+      0,
+      1709,
+      664
+    ],
+    "per_color_sample_roi_px": {
+      "0": [
+        424,
+        218,
+        436,
+        232
+      ]
+    },
+    "sample_method": "人工确认物理角色和色相；指定图区 RGB 分箱后取邻近高频代表色。图像压缩和抗锯齿会影响数值；不是作者源代码 HEX。",
+    "checked_on": "2026-10-28",
+    "evidence_sha256": "8f16cb40199b5eda2ceca1f95c182feebec3ec034addeb58d5f4ae6329e73999",
+    "image_url": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs42254-019-0053-3/MediaObjects/42254_2019_53_Fig3_HTML.png"
+  }
+]

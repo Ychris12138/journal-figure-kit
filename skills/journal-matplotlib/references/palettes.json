@@ -1,0 +1,41 @@
+{
+  "checked": "2026-10-28",
+  "categorical": {
+    "okabe_ito": {
+      "label": "Okabe-Ito",
+      "colors": ["#0072B2", "#D55E00", "#009E73", "#CC79A7", "#E69F00", "#56B4E9", "#000000", "#F0E442"],
+      "source": "https://jfly.uni-koeln.de/color/",
+      "locator": "Figure 16",
+      "hex_verification": "https://research-figure-guide.nature.com/figures/building-and-exporting-figure-panels/#making-your-colours-accessible",
+      "note": "Original colors, local reordered sequence. Yellow last; avoid thin yellow lines on white."
+    },
+    "tol_bright": {
+      "label": "Tol bright",
+      "colors": ["#4477AA", "#EE6677", "#228833", "#CCBB44", "#66CCEE", "#AA3377", "#BBBBBB"],
+      "source": "https://sronpersonalpages.nl/~pault/",
+      "locator": "Figure 1",
+      "note": "Gray can represent a reference only when explicitly mapped; no automatic recycling."
+    },
+    "tol_high_contrast": {
+      "label": "Tol high contrast",
+      "colors": ["#004488", "#DDAA33", "#BB5566"],
+      "source": "https://sronpersonalpages.nl/~pault/",
+      "locator": "Figure 2",
+      "note": "Three groups; designed for improved grayscale distinction."
+    },
+    "tol_muted": {
+      "label": "Tol muted",
+      "colors": ["#CC6677", "#332288", "#DDCC77", "#117733", "#88CCEE", "#882255", "#44AA99", "#999933", "#AA4499"],
+      "source": "https://sronpersonalpages.nl/~pault/",
+      "locator": "Figure 4",
+      "note": "Nine categories maximum; prefer facets when crowded. Pale gray in the source denotes bad data, not a tenth group."
+    }
+  },
+  "continuous": {
+    "cividis": {"kind": "sequential", "source": "https://doi.org/10.1371/journal.pone.0199239", "locator": "Figures 4 and 5"},
+    "viridis": {"kind": "sequential", "source": "https://matplotlib.org/stable/users/explain/colors/colormaps.html", "locator": "Sequential"},
+    "magma": {"kind": "sequential", "source": "https://matplotlib.org/stable/users/explain/colors/colormaps.html", "locator": "Sequential"},
+    "RdBu_r": {"kind": "diverging", "source": "https://colorbrewer2.org/", "locator": "Diverging / RdBu; reversed locally", "note": "Specify a physical midpoint. Not a monotonic grayscale encoding of signed values."},
+    "twilight": {"kind": "cyclic", "source": "https://matplotlib.org/stable/users/explain/colors/colormaps.html", "locator": "Cyclic", "note": "For wrapped phase/angle only; not generic ordered data."}
+  }
+}

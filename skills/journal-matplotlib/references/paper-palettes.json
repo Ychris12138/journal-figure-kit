@@ -1,0 +1,195 @@
+{
+  "palettes": [
+    {
+      "id": "paper_nature_soft3",
+      "label": "微塑料—水界面活性",
+      "kind": "categorical",
+      "colors": [
+        "#7CB48B",
+        "#E4B185",
+        "#6F91BD"
+      ],
+      "source": {
+        "type": "paper_approximate",
+        "title": "Intrinsic physicochemical activity at microplastic-water interfaces",
+        "url": "https://doi.org/10.1038/s41586-026-11141-y",
+        "figure": "Fig. 3a–b",
+        "version": "PMC 收录期刊图",
+        "image_url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC13668708.1/41586_2026_11141_Fig3_HTML.webp",
+        "method": "人工确认色相；所选面板 RGB 像素按通道分箱去除零散像素，再取近邻代表色。非作者源代码 HEX，非完整色标。",
+        "checked_on": "2026-10-28"
+      },
+      "use": "适合三模型、三材料或三种表面；线与填充使用同一色相。",
+      "caveat": "重叠密度图降低填充不透明度，保留清晰轮廓。",
+      "verification": "Not yet approved for a user figure; no blanket color-vision-safety claim."
+    },
+    {
+      "id": "paper_nature_dual3",
+      "label": "水中碳纳米管的光致量子摩擦",
+      "kind": "categorical",
+      "colors": [
+        "#020201",
+        "#BC0D7A",
+        "#2D89B3"
+      ],
+      "source": {
+        "type": "paper_approximate",
+        "title": "Light-induced quantum friction of carbon nanotubes in water",
+        "url": "https://doi.org/10.1038/s41586-026-10632-2",
+        "figure": "Fig. 2a–d",
+        "version": "PMC 收录期刊图",
+        "image_url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC13293881.1/41586_2026_10632_Fig2_HTML.jpg",
+        "method": "人工确认色相；所选面板 RGB 像素按通道分箱去除零散像素，再取近邻代表色。非作者源代码 HEX，非完整色标。",
+        "checked_on": "2026-10-28"
+      },
+      "use": "适合两条机制分支、干预与基准；同时表达类别和剂量。",
+      "caveat": "最浅一档需检查白底可读性；保留端点浓度标注。",
+      "verification": "Not yet approved for a user figure; no blanket color-vision-safety claim."
+    },
+    {
+      "id": "paper_ncomms_components5",
+      "label": "多体作用与气—水界面卤离子分布",
+      "kind": "categorical",
+      "colors": [
+        "#DBA42B",
+        "#63B2DC",
+        "#BD7CA2",
+        "#1B7AAC",
+        "#D37B34"
+      ],
+      "source": {
+        "type": "paper_approximate",
+        "title": "Many-body interactions resolve halide distribution at the air/water interface",
+        "url": "https://doi.org/10.1038/s41467-026-77205-9",
+        "figure": "Fig. 3A–H",
+        "version": "PMC 收录期刊图",
+        "image_url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC13620159.1/41467_2026_77205_Fig3_HTML.webp",
+        "method": "人工确认色相；所选面板 RGB 像素按通道分箱去除零散像素，再取近邻代表色。非作者源代码 HEX，非完整色标。",
+        "checked_on": "2026-10-28"
+      },
+      "use": "适合力场分解、能量分量和多个表面的同构面板。",
+      "caveat": "两种蓝色补充线型；阴影不能覆盖中心曲线。",
+      "verification": "Not yet approved for a user figure; no blanket color-vision-safety claim."
+    },
+    {
+      "id": "paper_pre_mechanics4",
+      "label": "平面细胞单层的体积力学效应",
+      "kind": "categorical",
+      "colors": [
+        "#32AAD6",
+        "#268E80",
+        "#E28344",
+        "#D63E71"
+      ],
+      "source": {
+        "type": "paper_approximate",
+        "title": "Modeling bulk mechanical effects in a planar cellular monolayer",
+        "url": "https://doi.org/10.1103/5l56-wc8f",
+        "figure": "Fig. 2c–d",
+        "version": "PMC 作者稿图",
+        "image_url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC7619381.1/EMS217245-f002.webp",
+        "method": "人工确认色相；所选面板 RGB 像素按通道分箱去除零散像素，再取近邻代表色。非作者源代码 HEX，非完整色标。",
+        "checked_on": "2026-10-28"
+      },
+      "use": "适合应力分解、不同贡献项与机制区域同时表达。",
+      "caveat": "灰色区域单独说明，勿把背景灰与数据误差带混为一类。",
+      "verification": "Not yet approved for a user figure; no blanket color-vision-safety claim."
+    },
+    {
+      "id": "paper_jcp_variants5",
+      "label": "凝聚体疏水性与膜表面部分干燥",
+      "kind": "categorical",
+      "colors": [
+        "#392D7D",
+        "#338DDB",
+        "#328272",
+        "#94B522",
+        "#915C9C"
+      ],
+      "source": {
+        "type": "paper_approximate",
+        "title": "Intrinsic hydrophobicity of IDP-based biomolecular condensates drives their partial drying on membrane surfaces",
+        "url": "https://doi.org/10.1063/5.0253522",
+        "figure": "Fig. 2a–b",
+        "version": "PMC 收录期刊图",
+        "image_url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC11919390.1/JCPSA6-000162-115101_1-g002.jpg",
+        "method": "人工确认色相；所选面板 RGB 像素按通道分箱去除零散像素，再取近邻代表色。非作者源代码 HEX，非完整色标。",
+        "checked_on": "2026-10-28"
+      },
+      "use": "适合四到五个模型/材料；分散色相、适中饱和度。",
+      "caveat": "黄绿色适当加深；所有跨面板图例保持相同顺序。",
+      "verification": "Not yet approved for a user figure; no blanket color-vision-safety claim."
+    },
+    {
+      "id": "paper_jpcl_components5",
+      "label": "跨 Widom 线的内聚强度与空穴形成",
+      "kind": "categorical",
+      "colors": [
+        "#233945",
+        "#BC4C82",
+        "#EB993D",
+        "#ADC9DD",
+        "#74B599"
+      ],
+      "source": {
+        "type": "paper_approximate",
+        "title": "Crossing the Widom Line: Evolution of Cohesive Strength and Cavity Formation in Supercritical Water",
+        "url": "https://doi.org/10.1021/acs.jpclett.6c01190",
+        "figure": "Fig. 2a–d",
+        "version": "PMC 收录期刊图",
+        "image_url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC13488442.1/jz6c01190_0002.webp",
+        "method": "人工确认色相；所选面板 RGB 像素按通道分箱去除零散像素，再取近邻代表色。非作者源代码 HEX，非完整色标。",
+        "checked_on": "2026-10-28"
+      },
+      "use": "适合热力学分解与峰位错开；竖参考线沿用对应曲线色。",
+      "caveat": "浅蓝、柔绿在细线下加深；不同面板图例要明确。",
+      "verification": "Not yet approved for a user figure; no blanket color-vision-safety claim."
+    },
+    {
+      "id": "paper_pnas_mechanism2",
+      "label": "溶致向列混合物的自发相分离",
+      "kind": "categorical",
+      "colors": [
+        "#7A5533",
+        "#7323D4"
+      ],
+      "source": {
+        "type": "paper_approximate",
+        "title": "Spontaneous phase separation and pattern formation in a lyotropic nematic mixture",
+        "url": "https://doi.org/10.1073/pnas.2604649123",
+        "figure": "Fig. 3C–D",
+        "version": "PMC 收录期刊图",
+        "image_url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC13367829.1/pnas.2604649123fig03.jpg",
+        "method": "人工确认色相；所选面板 RGB 像素按通道分箱去除零散像素，再取近邻代表色。非作者源代码 HEX，非完整色标。",
+        "checked_on": "2026-10-28"
+      },
+      "use": "适合机制开关、消融测试，双色对比比多色更聚焦。",
+      "caveat": "色块针对右侧定量曲线，不包含左侧组分场的红黑色标。",
+      "verification": "Not yet approved for a user figure; no blanket color-vision-safety claim."
+    },
+    {
+      "id": "paper_science_structure4",
+      "label": "染色质凝聚体的多尺度结构与材料性",
+      "kind": "categorical",
+      "colors": [
+        "#B36CD4",
+        "#747AD4",
+        "#1B8B8C",
+        "#979901"
+      ],
+      "source": {
+        "type": "paper_approximate",
+        "title": "Multiscale structure of chromatin condensates explains phase separation and material properties",
+        "url": "https://doi.org/10.1126/science.adv6588",
+        "figure": "Fig. 2I–K",
+        "version": "PMC 作者稿图",
+        "image_url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC12929043.1/nihms-2143018-f0002.jpg",
+        "method": "人工确认色相；所选面板 RGB 像素按通道分箱去除零散像素，再取近邻代表色。非作者源代码 HEX，非完整色标。",
+        "checked_on": "2026-10-28"
+      },
+      "use": "适合结构快照与统计量并排，让图形对象跨面板容易追踪。",
+      "caveat": "这四个颜色仅对应 I–K；不要将局部配色冒充整篇统一映射。",
+      "verification": "Not yet approved for a user figure; no blanket color-vision-safety claim."
+    }
+  ]
+}

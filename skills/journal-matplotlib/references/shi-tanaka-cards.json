@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "title": "Shi / Tanaka 文献启发配色 · 待确认",
+  "cards": [
+    {
+      "id": "D",
+      "revision": 2,
+      "title": "经典红蓝黑",
+      "kind": "categorical",
+      "mapping": {
+        "Group 1": "#E20D0D",
+        "Group 2": "#0402DB",
+        "Group 3": "#010101"
+      },
+      "background": "#FFFFFF",
+      "text": "#222222",
+      "reference": "#777777",
+      "band_alpha": 0.16,
+      "source": {
+        "type": "paper_approximate",
+        "title": "Distinct signature of local tetrahedral ordering in the scattering function of covalent liquids and glasses",
+        "url": "https://doi.org/10.1126/sciadv.aav3194",
+        "figure": "Fig. 2；参照 Fig. 4A–D",
+        "version": "PMC 收录期刊图；核对正文与图注",
+        "image_url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC6397023.1/aav3194-F2.jpg",
+        "method": "人工确认物理角色和色相；指定图区 RGB 分箱后取邻近高频代表色。图像压缩和抗锯齿会影响数值；不是作者源代码 HEX。",
+        "checked_on": "2026-10-28"
+      },
+      "observed_colors": [
+        "#E20D0D",
+        "#0402DB",
+        "#010101"
+      ],
+      "changes": "保留红、蓝、黑近似色；三个 Group 仅演示，不继承 Si/O 的物理身份。",
+      "use": "这是最直接的物理角色配色：数据、峰位箭头、公式和示意图互相呼应，三色已经足够。",
+      "caveat": "待确认；Group 为占位类别。alpha=0.16 为建议值；检查实际细线、灰度与色觉模拟。"
+    },
+    {
+      "id": "E",
+      "revision": 2,
+      "title": "蓝橙黑",
+      "kind": "categorical",
+      "mapping": {
+        "Group 1": "#022DFE",
+        "Group 2": "#FE9301",
+        "Group 3": "#010101"
+      },
+      "background": "#FFFFFF",
+      "text": "#222222",
+      "reference": "#777777",
+      "band_alpha": 0.16,
+      "source": {
+        "type": "paper_approximate",
+        "title": "Competing hydrogen-bond orders drive water’s anomalous surface tension",
+        "url": "https://doi.org/10.1038/s41467-026-69356-6",
+        "figure": "Fig. 2a–d；与 Fig. 1a 比较",
+        "version": "PMC 收录期刊图；Tanaka 共同署名，Rui Shi 不在作者列表",
+        "image_url": "https://pmc-oa-opendata.s3.amazonaws.com/PMC12923668.1/41467_2026_69356_Fig2_HTML.jpg",
+        "method": "人工确认物理角色和色相；指定图区 RGB 分箱后取邻近高频代表色。图像压缩和抗锯齿会影响数值；不是作者源代码 HEX。",
+        "checked_on": "2026-10-28"
+      },
+      "observed_colors": [
+        "#010101",
+        "#022DFE",
+        "#FE9301"
+      ],
+      "changes": "保留 Fig. 2 近似蓝、橙、黑；正式图建议黑色作 total，先确认分量身份。",
+      "use": "很适合界面 profile 与总量分解：黑色保留给总量，两个分量用清晰的冷暖色。",
+      "caveat": "待确认；Group 为占位类别。alpha=0.16 为建议值；检查实际细线、灰度与色觉模拟。"
+    },
+    {
+      "id": "F",
+      "revision": 2,
+      "title": "综述红蓝灰",
+      "kind": "categorical",
+      "mapping": {
+        "Group 1": "#D32414",
+        "Group 2": "#007AB7",
+        "Group 3": "#3C474B"
+      },
+      "background": "#FFFFFF",
+      "text": "#222222",
+      "reference": "#777777",
+      "band_alpha": 0.16,
+      "source": {
+        "type": "paper_approximate",
+        "title": "Revealing key structural features hidden in liquids and glasses",
+        "url": "https://doi.org/10.1038/s42254-019-0053-3",
+        "figure": "Fig. 3a–b",
+        "version": "出版社公开原图与摘要；完整综述正文订阅受限",
+        "image_url": "https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs42254-019-0053-3/MediaObjects/42254_2019_53_Fig3_HTML.png",
+        "method": "人工确认物理角色和色相；指定图区 RGB 分箱后取邻近高频代表色。图像压缩和抗锯齿会影响数值；不是作者源代码 HEX。",
+        "checked_on": "2026-10-28"
+      },
+      "observed_colors": [
+        "#3C474B",
+        "#D32414",
+        "#007AB7",
+        "#EA7B00",
+        "#2EB755"
+      ],
+      "changes": "选取原图红、蓝、灰作三类别；将灰色用于连线是本次统一建议，原 a 面板 ζ 连线为黑色。",
+      "use": "比纯红纯蓝更克制，仍保持清晰的色相差异；颜色、点型和模型曲线的角色分工都明确。",
+      "caveat": "待确认；Group 为占位类别。alpha=0.16 为建议值；检查实际细线、灰度与色觉模拟。"
+    }
+  ]
+}

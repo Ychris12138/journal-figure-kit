@@ -1,0 +1,7 @@
+interface:
+  display_name: "Journal Figure Kit"
+  short_description: "Exact-size figures, confirmed palettes and visual QA"
+  default_prompt: "Use $journal-matplotlib to create a Matplotlib figure in explore, report, or publication mode."
+
+policy:
+  allow_implicit_invocation: false

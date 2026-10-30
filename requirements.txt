@@ -1,0 +1,9 @@
+# Direct dependency snapshot actually tested on Python 3.12 / Windows.
+# This is not a complete transitive lock or a cross-platform certification.
+matplotlib==3.11.2
+numpy==2.5.4
+Pillow==13.0.0
+pypdf==6.10.0
+PyMuPDF==2.0
+# Optional for end users; included so release tests run all CVD checks.
+colorspacious==1.1.2

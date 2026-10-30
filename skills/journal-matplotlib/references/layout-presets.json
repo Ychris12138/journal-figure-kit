@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "scope": "Local 2D layout screening thresholds, not publisher rules; measure on the final-size canvas.",
+  "profiles": {
+    "explore": {"clearance_mm": 0.15, "w_pad_mm": 1.0, "h_pad_mm": 1.0, "wspace": 0.04, "hspace": 0.04},
+    "report": {"clearance_mm": 0.30, "w_pad_mm": 1.2, "h_pad_mm": 1.2, "wspace": 0.05, "hspace": 0.06},
+    "publication": {"clearance_mm": 0.40, "w_pad_mm": 1.2, "h_pad_mm": 1.2, "wspace": 0.06, "hspace": 0.08}
+  },
+  "scene_defaults": {
+    "sparse_line": "Try verified clear internal legend positions; reserve an outside key if none passes.",
+    "dense_scatter_or_bars": "Start with a dedicated legend row/column; do not cover observations or uncertainty.",
+    "heatmap_or_image": "Reserve a colorbar cell; tag intentional in-cell values or scale labels with a reason.",
+    "multipanel": "Use GridSpec, separate key/colorbar cells and aligned outer labels; check cross-panel intrusions.",
+    "dense_point_labels": "Use explicit leader annotations; optional adjustText only after final geometry, with fixed targets and bounded iterations."
+  }
+}
