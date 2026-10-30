@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.10.0-rc.1 — 2026-10-30
+
+- Expand the Chinese README with a prominent entry, agent-specific commands, setup, update and troubleshooting guidance.
+- Add a standard-library installer for Codex, Claude Code, Cursor, Gemini CLI, OpenCode, VS Code Copilot and generic file-based use.
+- Adapt native invocation metadata while sharing all scientific instructions and plotting tools; document host-enforced versus instruction-only activation controls.
+- Support pinned release downloads with SHA256 verification, local/offline sources, optional isolated Python dependencies, previews, receipts, checks and backed-up updates.
+- Add installer behavior tests and three-OS CI coverage. Live model sessions in external agent applications remain untested.
+
 ## 0.9.0-rc.2 — 2026-10-30
 
 - Adopt the MIT License following the project owner's explicit choice; include it in both the repository and installable skill.

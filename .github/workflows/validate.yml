@@ -16,7 +16,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [ubuntu-latest, windows-latest, macos-latest]
     env:
       MPLBACKEND: Agg
       PYTHONUTF8: '1'
@@ -34,3 +34,7 @@ jobs:
         run: python examples/layout_proof.py --output build/layout
       - name: Package release candidate
         run: python tools/package_release.py --output build/dist
+      - name: Install adapters in an isolated project
+        run: python install.py --agent codex claude-code cursor gemini opencode copilot --scope project --project build/install-smoke
+      - name: Check installed adapters
+        run: python install.py --agent codex claude-code cursor gemini opencode copilot --scope project --project build/install-smoke --check

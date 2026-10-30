@@ -1,6 +1,6 @@
 # Release notes and verification
 
-Project: **Journal Figure Kit**. Current candidate: `v0.9.0-rc.2` (MIT license update). First public candidate: `v0.9.0-rc.1`.
+Project: **Journal Figure Kit**. Current candidate: `v0.10.0-rc.1` (cross-agent installation). First public candidate: `v0.9.0-rc.1`.
 Repository: <https://github.com/Ychris12138/journal-figure-kit>.
 The installed skill folder and explicit invocation remain `journal-matplotlib`.
 
@@ -14,6 +14,8 @@ The installed skill folder and explicit invocation remain `journal-matplotlib`.
 - Rendered collision screening, bounded legend/note repair and reserved-region recipes.
 - Complete standalone panels with preserved scientific encodings.
 - Source and skill ZIPs with SHA256 checksums; no private figures, source data or local paths.
+- Standalone `install.py`, host-specific directory/metadata adaptation and optional isolated Python setup.
+- Installation previews/checks, explicit updates with ZIP backups, and a shared runtime for multiple selected agents.
 
 ## Verification before the first upload
 
@@ -23,7 +25,7 @@ The installed skill folder and explicit invocation remain `journal-matplotlib`.
 - Skill metadata validation passed; local Markdown links and public-file scans were checked.
 - PNGs and independently rendered PDFs were inspected during figure development. Details are in [validation.md](validation.md).
 
-GitHub Actions runs the helper suite, synthetic layout proof and packaging on Windows and Ubuntu. Consult the [Actions page](https://github.com/Ychris12138/journal-figure-kit/actions) for live results; a workflow definition alone is not evidence of a pass.
+GitHub Actions runs the helper suite, synthetic layout proof, packaging and six-adapter installation checks on Windows, Ubuntu and macOS. Consult the [Actions page](https://github.com/Ychris12138/journal-figure-kit/actions) for live results; a workflow definition alone is not evidence of a pass. Host model behavior is a separate, unexecuted validation scope.
 
 ## Release assets
 
@@ -33,7 +35,7 @@ From a reviewed checkout, run:
 python tools/package_release.py --output build/dist
 ```
 
-This produces `journal-figure-kit-0.9.0-rc.2-source.zip`, `journal-figure-kit-0.9.0-rc.2-skill.zip`, `SHA256SUMS.txt`, a per-file manifest and package metadata. The installable ZIP contains a `journal-matplotlib/` folder and the license notice. `build/`, Git metadata, virtual environments and Python caches are excluded.
+This produces `journal-figure-kit-0.10.0-rc.1-source.zip`, `journal-figure-kit-0.10.0-rc.1-skill.zip`, `install.py`, `SHA256SUMS.txt`, a per-file manifest and package metadata. Checksums cover both ZIPs and the installer. The installable ZIP contains a `journal-matplotlib/` folder, its dependency list and the MIT license. `build/`, Git metadata, virtual environments and Python caches are excluded.
 
 The public release is a prerelease, not a claim of journal certification. Keep unverified journal sources and unsupported collision geometry explicit. Review the source tree and both archives before uploading; do not include private regression artifacts.
 

@@ -1,13 +1,16 @@
 ---
 name: journal-matplotlib
-description: Apply a lightweight three-mode Matplotlib workflow for exploratory, report, or publication-quality scientific figures. Use only when the user explicitly invokes `$journal-matplotlib` or explicitly names the `journal-matplotlib` skill; never trigger it automatically for ordinary plotting.
+description: Apply a three-mode Matplotlib workflow for exploratory, report, or publication-quality scientific figures. Use only when the user explicitly invokes or names journal-matplotlib; never trigger it automatically for ordinary plotting.
+license: MIT
 ---
 
 # Journal Figure Kit
 
-The installed skill and explicit invocation retain the name `journal-matplotlib`.
+The installed skill retains the name `journal-matplotlib`. Invoke it with `$journal-matplotlib` in Codex, `/journal-matplotlib` in Claude Code, Cursor or VS Code Copilot, or explicitly request the named skill in Gemini CLI/OpenCode. See [agent usage](references/agent-usage.md) for host-specific controls and limits.
 
-Version 0.9.0-rc.2. Apply only after explicit invocation. Keep plotting code self-contained and settings inside `mpl.rc_context`; do not install packages or change persistent Matplotlib settings without authorization. Put user scripts, data, defaults and generated output in the figure project, never in this installed skill.
+Version 0.10.0-rc.1. Apply only after explicit invocation. Keep plotting code self-contained and settings inside `mpl.rc_context`; do not install packages or change persistent Matplotlib settings without authorization. Put user scripts, data, defaults and generated output in the figure project, never in this installed skill.
+
+If `local_runtime.json` exists beside this file, use its `python` executable for bundled scripts after checking the path exists. Otherwise use the user's selected project environment. Missing dependencies are setup work, not a reason to change the system Python silently. The installer can create a separate environment when explicitly run with `--with-deps`.
 
 ## Establish the figure contract
 

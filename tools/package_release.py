@@ -3,6 +3,7 @@ from pathlib import Path
 import argparse
 import hashlib
 import json
+import shutil
 import zipfile
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -37,6 +38,9 @@ def build(destination):
             assert archive.testzip() is None
             assert len(archive.namelist()) == len(selected)
         packages.append({'name': name, 'sha256': digest(target), 'files': len(selected), 'bytes': target.stat().st_size})
+    installer = destination/'install.py'
+    shutil.copyfile(ROOT/'install.py', installer)
+    packages.append({'name': installer.name, 'sha256': digest(installer), 'files': 1, 'bytes': installer.stat().st_size})
     (destination/'file-manifest.json').write_text(json.dumps(manifest, indent=2), encoding='utf-8')
     (destination/'SHA256SUMS.txt').write_text(''.join(f"{item['sha256']}  {item['name']}\n" for item in packages), encoding='ascii')
     (destination/'packages.json').write_text(json.dumps(packages, indent=2), encoding='utf-8')

@@ -2,13 +2,13 @@
 
 **让科研图在论文最终尺寸下，依然清楚可读。**
 
-[English](README.md) · [下载 v0.9.0-rc.2](https://github.com/Ychris12138/journal-figure-kit/releases/tag/v0.9.0-rc.2) · [效果与验证](docs/validation.md)
+[English](README.md) · [下载 v0.10.0-rc.1](https://github.com/Ychris12138/journal-figure-kit/releases/tag/v0.10.0-rc.1) · [效果与验证](docs/validation.md)
 
 [![Validate](https://github.com/Ychris12138/journal-figure-kit/actions/workflows/validate.yml/badge.svg)](https://github.com/Ychris12138/journal-figure-kit/actions/workflows/validate.yml)
 
-面向物理、化学和分子模拟的 Codex 作图 skill 与 Python 工具集：先确认配色和物理含义，再按最终尺寸构图，检查字号、遮挡和实际导出文件，交付可编辑 PDF 与高分辨率 PNG。
+面向物理、化学和分子模拟、可适配多种 agent 的科研作图 skill 与 Python 工具集：先确认配色和物理含义，再按最终尺寸构图，检查字号、遮挡和实际导出文件，交付可编辑 PDF 与高分辨率 PNG。
 
-项目名是 **Journal Figure Kit**；安装后的调用名保留 **`$journal-matplotlib`**。
+项目名是 **Journal Figure Kit**，skill 名称保留 **`journal-matplotlib`**。支持 Codex、Claude Code、Cursor、Gemini CLI、OpenCode 与 VS Code Copilot 的安装适配。
 
 ![合成多面板科研图示例](docs/assets/overview.png)
 
@@ -28,35 +28,80 @@
 
 美化不改数据、拟合、误差定义或缺失观测；不会靠缩小已确认字号、改变坐标范围或删掉图例条目来消除遮挡。
 
-## 安装
+## 快速安装：下载后运行一条命令
 
-需要 Codex 和 Python 环境；发行测试使用 Python 3.12。skill 只在显式调用时启用。
+先下载 **[安装器 install.py](https://github.com/Ychris12138/journal-figure-kit/releases/download/v0.10.0-rc.1/install.py)**，在文件所在目录用 Python 3.12 运行：
 
-在 Codex 中可以直接说：
+```bash
+python install.py --agent codex --scope user --with-deps
+```
+
+把 `codex` 换成下表中的 agent 即可。安装器会下载固定版本、核对 SHA256、安装对应目录和调用设置，并创建独立 Python 环境。无需 Git、Node.js、管理员权限，也不用手动激活虚拟环境。已有科研环境和依赖时，去掉 `--with-deps`。
+
+| 使用的工具 | `--agent` 参数 | 安装后的调用方式 |
+|---|---|---|
+| Codex | `codex` | `$journal-matplotlib` |
+| Claude Code | `claude-code` | `/journal-matplotlib` |
+| Cursor | `cursor` | `/journal-matplotlib` |
+| Gemini CLI | `gemini` | 明确说“使用 journal-matplotlib skill” |
+| OpenCode | `opencode` | 明确说“加载 journal-matplotlib skill” |
+| VS Code Copilot | `copilot` | `/journal-matplotlib` |
+| 其他能读文件、运行 Python 的 agent | `generic` | 提供已安装 `SKILL.md` 的完整路径 |
+
+例如 Claude Code 用户：
+
+```bash
+python install.py --agent claude-code --scope user --with-deps
+```
+
+同时安装多个工具，共用一个 Python 环境：
+
+```bash
+python install.py --agent codex claude-code cursor --scope user --with-deps
+```
+
+只给当前项目安装：
+
+```bash
+python install.py --agent gemini --scope project
+```
+
+查看路径、升级和检查：
+
+```bash
+python install.py --agent codex --scope user --dry-run
+python install.py --agent codex --scope user --update
+python install.py --agent codex --scope user --check
+```
+
+- `--scope user`：当前用户的所有项目可用；默认 `project` 只安装在当前项目。
+- `--with-deps`：建立独立 venv 并安装作图依赖，不修改系统 Python；可配合 `--venv 路径` 指定位置。
+- `--update`：先保存旧版 ZIP 备份，再替换；保留已有 Python 环境记录。未指定时拒绝覆盖。
+- `--check`：核对安装文件和依赖。`--dry-run` 只显示路径，不下载、不写文件。
+- `--dest 路径`：指定自定义 skills 父目录，每次限一个 agent。
+
+安装后重新加载 skills 或开启新会话。Gemini CLI 可用 `/skills list` 和 `/skills reload`；VS Code 可在 Open Customizations → Skills 中检查。
+
+**适配验证的是文件、目录和调用元数据，不代表已经在所有工具中跑过真实模型会话。** Codex、Claude Code、Cursor、VS Code 有各自的显式调用控制；Gemini/OpenCode 保留“用户明确要求才使用”的指令，并遵循工具本身的加载机制。[适配矩阵、官方依据与边界](docs/agents.md)
+
+### 从源码或 Codex 安装
+
+克隆仓库或解压源码 ZIP 后，在根目录运行同一条 `python install.py ...` 命令即可使用本地资源。也可在 Codex 中说：
 
 ```text
-使用 $skill-installer 安装这个 skill：
-https://github.com/Ychris12138/journal-figure-kit/tree/v0.9.0-rc.2/skills/journal-matplotlib
+使用 $skill-installer 安装：
+https://github.com/Ychris12138/journal-figure-kit/tree/v0.10.0-rc.1/skills/journal-matplotlib
 ```
 
-也可从 [Release](https://github.com/Ychris12138/journal-figure-kit/releases/tag/v0.9.0-rc.2) 下载 skill ZIP，把其中的 `journal-matplotlib` 文件夹放到 `$CODEX_HOME/skills/`；未设置时通常为 `~/.codex/skills/`。已有同名版本时先备份。安装后开启新 Codex 会话。
+Codex 自带安装器只复制 skill，不安装 Python 依赖。可在现有环境中安装 skill 内的 `requirements.txt`，或用本项目安装器执行 `--update --with-deps`。手动安装时应复制完整目录，目标路径见[适配说明](docs/agents.md)。
 
-Python 工具和示例建议使用独立环境：
+中文色卡需要 Microsoft YaHei、Noto Sans CJK SC 或 SimHei 等字体；科学图测试采用 DejaVu Sans。
 
-```bash
-git clone https://github.com/Ychris12138/journal-figure-kit.git
-cd journal-figure-kit
-git checkout v0.9.0-rc.2
-python -m venv .venv
-```
+### 常见安装问题
 
-PowerShell 使用 `.venv\Scripts\Activate.ps1` 激活，bash 使用 `source .venv/bin/activate`，随后运行：
-
-```bash
-python -m pip install -r requirements.txt
-```
-
-告诉 Codex 在该环境中运行作图脚本。工具不会自行安装依赖或改动持久化 Matplotlib 配置。中文色卡需要 Microsoft YaHei、Noto Sans CJK SC 或 SimHei 等字体；科学图测试采用 DejaVu Sans。
+- **找不到 skill**：先重新加载或开启新会话，用 `--dry-run` 查看目标目录，核对是否安装到了另一个项目。检查是否有同名旧副本。
+- **提示缺少 Python 包**：运行 `--check`；需要安装依赖时加 `--update --with-deps`。agent 应使用安装器输出、并记录在 `local_runtime.json` 中的 Python 路径。
+- **想升级**：下载新版本的 `install.py`，使用相同 agent 和安装范围，加 `--update`。自定义修改保存在安装目录旁的 `.journal-figure-kit-backups` ZIP 中，不会自动合并到新版。
 
 ## 直接这样用
 
@@ -102,7 +147,7 @@ $journal-matplotlib 图例挡住曲线了。保持字号和数据范围，寻找
 
 ## 测试与复现
 
-在仓库根目录、已激活环境中运行：
+在仓库根目录使用安装器输出的 Python 环境；也可先在项目环境运行 `python -m pip install -r requirements.txt`，再执行：
 
 ```bash
 python -m unittest discover -s tests -v
@@ -111,7 +156,7 @@ python examples/typography_proof.py --output build/typography
 python examples/layout_proof.py --output build/layout
 ```
 
-每次示例运行使用新的输出目录；导出工具默认拒绝覆盖。当前记录包括 **55 项通过的工具测试**、五类修复后的合成遮挡案例和 14 对私有真实科研图回归。实际科研图不随仓库发布。模型行为测试提示单独列出，未冒充已经执行的模型基准。
+每次示例运行使用新的输出目录；导出工具默认拒绝覆盖。测试集包含 **55 项作图测试与 17 项安装器测试**，另有五类修复后的合成遮挡案例和 14 对私有真实科研图回归；平台结果和跳过项见验证记录。实际科研图不随仓库发布。模型行为测试提示单独列出，未冒充已经执行的模型基准。
 
 [完整验证记录](docs/validation.md) · [尺寸与导出工具](skills/journal-matplotlib/references/quality-tools.md) · [字号调整](skills/journal-matplotlib/references/typography.md) · [防遮挡用法](skills/journal-matplotlib/references/collisions.md)
 

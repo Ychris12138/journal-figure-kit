@@ -1,0 +1,7 @@
+# Tested direct dependencies; must match the repository requirements.txt.
+matplotlib==3.11.2
+numpy==2.5.4
+Pillow==13.0.0
+pypdf==6.10.0
+PyMuPDF==2.0
+colorspacious==1.1.2
