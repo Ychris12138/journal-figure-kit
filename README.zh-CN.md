@@ -2,7 +2,7 @@
 
 **让科研图在论文最终尺寸下，依然清楚可读。**
 
-[English](README.md) · [下载 v0.9.0-rc.1](https://github.com/Ychris12138/journal-figure-kit/releases/tag/v0.9.0-rc.1) · [效果与验证](docs/validation.md)
+[English](README.md) · [下载 v0.9.0-rc.2](https://github.com/Ychris12138/journal-figure-kit/releases/tag/v0.9.0-rc.2) · [效果与验证](docs/validation.md)
 
 [![Validate](https://github.com/Ychris12138/journal-figure-kit/actions/workflows/validate.yml/badge.svg)](https://github.com/Ychris12138/journal-figure-kit/actions/workflows/validate.yml)
 
@@ -36,17 +36,17 @@
 
 ```text
 使用 $skill-installer 安装这个 skill：
-https://github.com/Ychris12138/journal-figure-kit/tree/v0.9.0-rc.1/skills/journal-matplotlib
+https://github.com/Ychris12138/journal-figure-kit/tree/v0.9.0-rc.2/skills/journal-matplotlib
 ```
 
-也可从 [Release](https://github.com/Ychris12138/journal-figure-kit/releases/tag/v0.9.0-rc.1) 下载 skill ZIP，把其中的 `journal-matplotlib` 文件夹放到 `$CODEX_HOME/skills/`；未设置时通常为 `~/.codex/skills/`。已有同名版本时先备份。安装后开启新 Codex 会话。
+也可从 [Release](https://github.com/Ychris12138/journal-figure-kit/releases/tag/v0.9.0-rc.2) 下载 skill ZIP，把其中的 `journal-matplotlib` 文件夹放到 `$CODEX_HOME/skills/`；未设置时通常为 `~/.codex/skills/`。已有同名版本时先备份。安装后开启新 Codex 会话。
 
 Python 工具和示例建议使用独立环境：
 
 ```bash
 git clone https://github.com/Ychris12138/journal-figure-kit.git
 cd journal-figure-kit
-git checkout v0.9.0-rc.1
+git checkout v0.9.0-rc.2
 python -m venv .venv
 ```
 
@@ -125,4 +125,4 @@ python examples/layout_proof.py --output build/layout
 
 ## 许可
 
-**目前尚未授予开源许可，保留所有权利。** 仓库公开可见，开源许可证仍待所有者选择。见 [LICENSE](LICENSE)。第三方依赖与链接论文保留各自的许可和著作权。
+本项目采用 **[MIT 许可证](LICENSE)**，署名为 © 2026 Ychris12138。第三方依赖与链接论文保留各自的许可和著作权。

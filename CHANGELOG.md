@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.9.0-rc.2 — 2026-10-30
+
+- Adopt the MIT License following the project owner's explicit choice; include it in both the repository and installable skill.
+- Update English/Chinese documentation, download links and release archives. Plotting behavior is unchanged from rc.1.
+
 ## 0.9.0-rc.1 — 2026-10-30
 
 - Publish as **Journal Figure Kit** with English/Chinese guides and reproducible examples; preserve the installed `journal-matplotlib` name and invocation.

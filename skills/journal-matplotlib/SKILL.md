@@ -7,7 +7,7 @@ description: Apply a lightweight three-mode Matplotlib workflow for exploratory,
 
 The installed skill and explicit invocation retain the name `journal-matplotlib`.
 
-Version 0.9.0-rc.1. Apply only after explicit invocation. Keep plotting code self-contained and settings inside `mpl.rc_context`; do not install packages or change persistent Matplotlib settings without authorization. Put user scripts, data, defaults and generated output in the figure project, never in this installed skill.
+Version 0.9.0-rc.2. Apply only after explicit invocation. Keep plotting code self-contained and settings inside `mpl.rc_context`; do not install packages or change persistent Matplotlib settings without authorization. Put user scripts, data, defaults and generated output in the figure project, never in this installed skill.
 
 ## Establish the figure contract
 

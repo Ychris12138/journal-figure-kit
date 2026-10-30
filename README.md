@@ -2,7 +2,7 @@
 
 **Scientific figures that remain readable at manuscript size.**
 
-[简体中文](README.zh-CN.md) · [Download v0.9.0-rc.1](https://github.com/Ychris12138/journal-figure-kit/releases/tag/v0.9.0-rc.1) · [Examples and validation](docs/validation.md)
+[简体中文](README.zh-CN.md) · [Download v0.9.0-rc.2](https://github.com/Ychris12138/journal-figure-kit/releases/tag/v0.9.0-rc.2) · [Examples and validation](docs/validation.md)
 
 [![Validate](https://github.com/Ychris12138/journal-figure-kit/actions/workflows/validate.yml/badge.svg)](https://github.com/Ychris12138/journal-figure-kit/actions/workflows/validate.yml)
 
@@ -36,17 +36,17 @@ Requires Codex and a Python environment. Python 3.12 is the release test target.
 
 ```text
 Use $skill-installer to install the skill from
-https://github.com/Ychris12138/journal-figure-kit/tree/v0.9.0-rc.1/skills/journal-matplotlib
+https://github.com/Ychris12138/journal-figure-kit/tree/v0.9.0-rc.2/skills/journal-matplotlib
 ```
 
-**Manual installation:** download the skill ZIP from the [release page](https://github.com/Ychris12138/journal-figure-kit/releases/tag/v0.9.0-rc.1), then put its `journal-matplotlib` folder in `$CODEX_HOME/skills/`, or `~/.codex/skills/` when `CODEX_HOME` is unset. Back up an existing installation before replacing it. Start a new Codex session after installing.
+**Manual installation:** download the skill ZIP from the [release page](https://github.com/Ychris12138/journal-figure-kit/releases/tag/v0.9.0-rc.2), then put its `journal-matplotlib` folder in `$CODEX_HOME/skills/`, or `~/.codex/skills/` when `CODEX_HOME` is unset. Back up an existing installation before replacing it. Start a new Codex session after installing.
 
 For the Python tools and runnable examples, clone the repository and install dependencies in a dedicated environment:
 
 ```bash
 git clone https://github.com/Ychris12138/journal-figure-kit.git
 cd journal-figure-kit
-git checkout v0.9.0-rc.1
+git checkout v0.9.0-rc.2
 python -m venv .venv
 ```
 
@@ -132,4 +132,4 @@ Open an issue with a small synthetic reproducer, Python/Matplotlib versions, fin
 
 ## License
 
-**No open-source license has been granted yet; all rights are reserved.** The repository is public, but an open-source license is still pending the owner's choice. See [LICENSE](LICENSE). Third-party libraries and linked papers retain their respective licenses and copyrights.
+Released under the **[MIT License](LICENSE)**. Copyright © 2026 Ychris12138. Third-party libraries and linked papers retain their respective licenses and copyrights.

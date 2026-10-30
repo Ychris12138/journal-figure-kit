@@ -1,6 +1,6 @@
 # Release notes and verification
 
-Project: **Journal Figure Kit**. First public candidate: `v0.9.0-rc.1`.
+Project: **Journal Figure Kit**. Current candidate: `v0.9.0-rc.2` (MIT license update). First public candidate: `v0.9.0-rc.1`.
 Repository: <https://github.com/Ychris12138/journal-figure-kit>.
 The installed skill folder and explicit invocation remain `journal-matplotlib`.
 
@@ -33,10 +33,10 @@ From a reviewed checkout, run:
 python tools/package_release.py --output build/dist
 ```
 
-This produces `journal-figure-kit-0.9.0-rc.1-source.zip`, `journal-figure-kit-0.9.0-rc.1-skill.zip`, `SHA256SUMS.txt`, a per-file manifest and package metadata. The installable ZIP contains a `journal-matplotlib/` folder and the license notice. `build/`, Git metadata, virtual environments and Python caches are excluded.
+This produces `journal-figure-kit-0.9.0-rc.2-source.zip`, `journal-figure-kit-0.9.0-rc.2-skill.zip`, `SHA256SUMS.txt`, a per-file manifest and package metadata. The installable ZIP contains a `journal-matplotlib/` folder and the license notice. `build/`, Git metadata, virtual environments and Python caches are excluded.
 
 The public release is a prerelease, not a claim of journal certification. Keep unverified journal sources and unsupported collision geometry explicit. Review the source tree and both archives before uploading; do not include private regression artifacts.
 
 ## License status
 
-Public publication was requested by the owner. An open-source license has not yet been chosen, so [LICENSE](../LICENSE) reserves rights rather than activating the earlier MIT proposal. Third-party libraries and linked papers retain their own terms.
+The owner selected the **MIT License** on 2026-10-30. Both the repository and installable skill include the full [license](../LICENSE), with copyright attributed to Ychris12138. Third-party libraries and linked papers retain their own terms. The MIT update is published as `v0.9.0-rc.2`; the earlier `v0.9.0-rc.1` tag and original archives remain available as historical artifacts.
