@@ -1,8 +1,10 @@
 # Journal Figure Kit
 
+[English](README.md) | **简体中文**
+
 **让科研图在论文最终尺寸下，依然清楚可读。**
 
-[English](README.md) · [下载 v0.10.0-rc.1](https://github.com/Ychris12138/journal-figure-kit/releases/tag/v0.10.0-rc.1) · [效果与验证](docs/validation.md)
+[快速安装](#quick-install) · [效果与验证](docs/validation.md) · [下载 v0.10.0-rc.1](https://github.com/Ychris12138/journal-figure-kit/releases/tag/v0.10.0-rc.1)
 
 [![Validate](https://github.com/Ychris12138/journal-figure-kit/actions/workflows/validate.yml/badge.svg)](https://github.com/Ychris12138/journal-figure-kit/actions/workflows/validate.yml)
 
@@ -10,23 +12,7 @@
 
 项目名是 **Journal Figure Kit**，skill 名称保留 **`journal-matplotlib`**。支持 Codex、Claude Code、Cursor、Gemini CLI、OpenCode 与 VS Code Copilot 的安装适配。
 
-![合成多面板科研图示例](docs/assets/overview.png)
-
-*示例使用合成数据；仓库不包含私有科研数据或原论文图片。*
-
-## 解决哪些问题
-
-| 常见问题 | 处理方式 |
-|---|---|
-| 边框大、外部留白多 | 先设计固定尺寸、面板、图例和色条区域，再测量实际导出边距。 |
-| 配色随意，状态颜色不一致 | 展示带版本的配色卡，确认颜色与物理量的映射；布局修改复用已有确认。 |
-| 想参考某篇文章的颜色 | 从参考图分离数据色、背景色与标注色，提出近似色卡，确认后应用。 |
-| 插入论文后文字太小 | 按最终放置宽度计算字号，支持整体倍率、正文基准及各字段独立覆盖。 |
-| 图例、标题或坐标轴挡内容 | 渲染后检查文字和真实数据墨迹，有限次调整位置，无解则预留独立区域。 |
-| 总图拆开后不能直接使用 | 重新生成完整独立子图，保留数值、颜色、单位、归一化和色条。 |
-| 期刊要求查不到出处 | 记录官方链接、章节/PDF 页码和未确认之处，区分期刊规定与本地预设。 |
-
-美化不改数据、拟合、误差定义或缺失观测；不会靠缩小已确认字号、改变坐标范围或删掉图例条目来消除遮挡。
+<a id="quick-install"></a>
 
 ## 快速安装：下载后运行一条命令
 
@@ -102,6 +88,24 @@ Codex 自带安装器只复制 skill，不安装 Python 依赖。可在现有环
 - **找不到 skill**：先重新加载或开启新会话，用 `--dry-run` 查看目标目录，核对是否安装到了另一个项目。检查是否有同名旧副本。
 - **提示缺少 Python 包**：运行 `--check`；需要安装依赖时加 `--update --with-deps`。agent 应使用安装器输出、并记录在 `local_runtime.json` 中的 Python 路径。
 - **想升级**：下载新版本的 `install.py`，使用相同 agent 和安装范围，加 `--update`。自定义修改保存在安装目录旁的 `.journal-figure-kit-backups` ZIP 中，不会自动合并到新版。
+
+## 解决哪些问题
+
+![合成多面板科研图示例](docs/assets/overview.png)
+
+*示例使用合成数据；仓库不包含私有科研数据或原论文图片。*
+
+| 常见问题 | 处理方式 |
+|---|---|
+| 边框大、外部留白多 | 先设计固定尺寸、面板、图例和色条区域，再测量实际导出边距。 |
+| 配色随意，状态颜色不一致 | 展示带版本的配色卡，确认颜色与物理量的映射；布局修改复用已有确认。 |
+| 想参考某篇文章的颜色 | 从参考图分离数据色、背景色与标注色，提出近似色卡，确认后应用。 |
+| 插入论文后文字太小 | 按最终放置宽度计算字号，支持整体倍率、正文基准及各字段独立覆盖。 |
+| 图例、标题或坐标轴挡内容 | 渲染后检查文字和真实数据墨迹，有限次调整位置，无解则预留独立区域。 |
+| 总图拆开后不能直接使用 | 重新生成完整独立子图，保留数值、颜色、单位、归一化和色条。 |
+| 期刊要求查不到出处 | 记录官方链接、章节/PDF 页码和未确认之处，区分期刊规定与本地预设。 |
+
+美化不改数据、拟合、误差定义或缺失观测；不会靠缩小已确认字号、改变坐标范围或删掉图例条目来消除遮挡。
 
 ## 直接这样用
 

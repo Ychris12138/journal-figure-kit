@@ -1,32 +1,16 @@
 # Journal Figure Kit
 
+**English** | [简体中文](README.zh-CN.md)
+
 **Scientific figures that remain readable at manuscript size.**
 
-**[中文说明与快速安装](README.zh-CN.md)** · [Download v0.10.0-rc.1](https://github.com/Ychris12138/journal-figure-kit/releases/tag/v0.10.0-rc.1) · [Examples and validation](docs/validation.md)
+[Quick install](#quick-install) · [Examples and validation](docs/validation.md) · [Download v0.10.0-rc.1](https://github.com/Ychris12138/journal-figure-kit/releases/tag/v0.10.0-rc.1)
 
 [![Validate](https://github.com/Ychris12138/journal-figure-kit/actions/workflows/validate.yml/badge.svg)](https://github.com/Ychris12138/journal-figure-kit/actions/workflows/validate.yml)
 
 An agent skill and Python toolkit for publication figures in Matplotlib. Confirm colors and their meaning, compose at the final physical size, check typography and collisions, and export an editable PDF with a high-resolution PNG.
 
 Built for physics, chemistry and molecular simulation workflows, with installation adapters for Codex, Claude Code, Cursor, Gemini CLI, OpenCode and VS Code Copilot. The skill name remains **`journal-matplotlib`**.
-
-![Synthetic multi-panel scientific figure with an outside legend](docs/assets/overview.png)
-
-*Synthetic example. The repository contains no private research data or copied paper figures.*
-
-## What it helps with
-
-| Figure problem | Approach |
-|---|---|
-| Large borders or wasted outer space | Construct a fixed-size canvas, allocate panels, legends and colorbars explicitly, and measure exported margins. |
-| Arbitrary or inconsistent colors | Show versioned color cards, confirm the mapping to physical quantities, and reuse that approval for layout-only changes. |
-| A reference figure has the colors you want | Separate data colors from backgrounds and annotations, propose approximate color cards, then confirm before recoloring. |
-| Text becomes tiny in the manuscript | Plan font sizes at the intended placement width; support overall scaling and role-specific overrides. |
-| Legends, labels or titles cover content | Measure rendered decorations and isolated data ink; try bounded repairs or reserve a separate region. |
-| Multi-panel figures need standalone exports | Regenerate complete panels with consistent data, colors, units and normalization. |
-| Journal guidance is hard to trace | Keep official links, section/page locators and verification limits beside the presets. |
-
-The workflow preserves source data, uncertainty definitions, missing observations and scientific identities. It does not change axis limits or shrink approved text simply to clear an overlap warning.
 
 ## Quick install
 
@@ -77,6 +61,24 @@ https://github.com/Ychris12138/journal-figure-kit/tree/v0.10.0-rc.1/skills/journ
 That route copies the canonical skill and does not set up Python dependencies. Run the bundled `requirements.txt` in your chosen environment, or use this project's installer with `--update --with-deps`. For manual installation, copy the complete skill folder to the [host's native directory](docs/agents.md), not only `SKILL.md`.
 
 Chinese palette previews need a CJK font such as Microsoft YaHei, Noto Sans CJK SC or SimHei. Scientific test figures use DejaVu Sans.
+
+## What it helps with
+
+![Synthetic multi-panel scientific figure with an outside legend](docs/assets/overview.png)
+
+*Synthetic example. The repository contains no private research data or copied paper figures.*
+
+| Figure problem | Approach |
+|---|---|
+| Large borders or wasted outer space | Construct a fixed-size canvas, allocate panels, legends and colorbars explicitly, and measure exported margins. |
+| Arbitrary or inconsistent colors | Show versioned color cards, confirm the mapping to physical quantities, and reuse that approval for layout-only changes. |
+| A reference figure has the colors you want | Separate data colors from backgrounds and annotations, propose approximate color cards, then confirm before recoloring. |
+| Text becomes tiny in the manuscript | Plan font sizes at the intended placement width; support overall scaling and role-specific overrides. |
+| Legends, labels or titles cover content | Measure rendered decorations and isolated data ink; try bounded repairs or reserve a separate region. |
+| Multi-panel figures need standalone exports | Regenerate complete panels with consistent data, colors, units and normalization. |
+| Journal guidance is hard to trace | Keep official links, section/page locators and verification limits beside the presets. |
+
+The workflow preserves source data, uncertainty definitions, missing observations and scientific identities. It does not change axis limits or shrink approved text simply to clear an overlap warning.
 
 ## Use it
 
