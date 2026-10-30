@@ -183,5 +183,44 @@ class InstallTests(unittest.TestCase):
         def deps(p):return [x.strip() for x in p.read_text().splitlines() if x.strip() and not x.startswith('#')]
         self.assertEqual(deps(ROOT/'requirements.txt'),deps(SOURCE/'requirements.txt'))
 
+    def test_quick_defaults_and_explicit_project(self):
+        for extra,agent,scope in [([], 'codex','user'),(['--agent','cursor','--project',str(self.root)],'cursor','project')]:
+            output=io.StringIO()
+            with self.subTest(scope=scope),patch.dict(os.environ,{},clear=True),patch.object(Path,'home',return_value=self.root/'home'),contextlib.redirect_stdout(output):
+                self.assertEqual(installer.main(['--quick','--dry-run']+extra),0)
+            record=json.loads(output.getvalue())[0]
+            self.assertEqual(record['agent'],agent);self.assertTrue(record['with_deps'])
+            expected=installer.destination(agent,scope,self.root,self.root/'home',{})
+            self.assertEqual(Path(record['target']),expected)
+
+    def test_quick_update_backs_up_existing_install(self):
+        target=self.target();installer.install_one(SOURCE,target,'codex')
+        (target/'note').write_text('keep in backup')
+        with contextlib.redirect_stdout(io.StringIO()),patch.object(installer,'runtime_environment') as runtime:
+            self.assertEqual(installer.main(['--quick','--no-deps','--dest',str(target.parent)]),0)
+        runtime.assert_not_called()
+        backups=list((target.parent/'.journal-figure-kit-backups').glob('*.zip'))
+        self.assertEqual(len(backups),1)
+        with zipfile.ZipFile(backups[0]) as z:self.assertEqual(z.read(installer.NAME+'/note'),b'keep in backup')
+
+    def test_quick_no_update_refuses_existing_install(self):
+        target=self.target();installer.install_one(SOURCE,target,'codex')
+        with self.assertRaises(FileExistsError):
+            installer.main(['--quick','--no-deps','--no-update','--dest',str(target.parent)])
+
+    def test_quick_check_does_not_install_or_update(self):
+        target=self.target();installer.install_one(SOURCE,target,'codex',python=sys.executable)
+        with patch.object(installer,'source_tree') as source,patch.object(installer,'runtime_environment') as runtime,contextlib.redirect_stdout(io.StringIO()):
+            self.assertEqual(installer.main(['--quick','--dest',str(target.parent),'--check']),0)
+        source.assert_not_called();runtime.assert_not_called()
+        self.assertFalse((target.parent/'.journal-figure-kit-backups').exists())
+
+    def test_quick_dependency_setup_uses_selected_environment(self):
+        target=self.target();runtime_path=self.root/'figure env'
+        with patch.object(installer,'runtime_environment',return_value=sys.executable) as runtime,contextlib.redirect_stdout(io.StringIO()):
+            self.assertEqual(installer.main(['--quick','--dest',str(target.parent),'--venv',str(runtime_path)]),0)
+        runtime.assert_called_once_with(runtime_path,SOURCE/'requirements.txt')
+        self.assertEqual(json.loads((target/'local_runtime.json').read_text())['python'],sys.executable)
+
 
 if __name__=='__main__':unittest.main()

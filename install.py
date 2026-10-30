@@ -23,7 +23,7 @@ import uuid
 import venv
 import zipfile
 
-VERSION = '0.10.0'
+VERSION = '0.11.0'
 NAME = 'journal-matplotlib'
 REPO = 'https://github.com/Ychris12138/journal-figure-kit'
 RECEIPT = '.journal-figure-kit-install.json'
@@ -280,18 +280,34 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--agent', nargs='+', choices=AGENTS)
     parser.add_argument('--list-agents', action='store_true')
-    parser.add_argument('--scope', choices=('project', 'user'), default='project')
-    parser.add_argument('--project', type=Path, default=Path.cwd())
+    parser.add_argument('--quick', action='store_true', help='Default to Codex, user scope, isolated dependencies and backed-up updates')
+    parser.add_argument('--scope', choices=('project', 'user'))
+    parser.add_argument('--project', type=Path)
     parser.add_argument('--dest', type=Path, help='Override the skills parent directory; one agent only')
     parser.add_argument('--source', type=Path, help='Local skill folder; otherwise use adjacent repo or pinned GitHub release')
-    parser.add_argument('--update', action='store_true', help='Back up the existing skill ZIP before replacing it')
-    parser.add_argument('--with-deps', action='store_true', help='Create a virtual environment and install plotting dependencies')
+    updates = parser.add_mutually_exclusive_group()
+    updates.add_argument('--update', action='store_true', help='Back up the existing skill ZIP before replacing it')
+    updates.add_argument('--no-update', action='store_true', help='In quick mode, refuse to replace an existing install')
+    dependencies = parser.add_mutually_exclusive_group()
+    dependencies.add_argument('--with-deps', action='store_true', help='Create a virtual environment and install plotting dependencies')
+    dependencies.add_argument('--no-deps', action='store_true', help='In quick mode, use the existing Python environment')
     parser.add_argument('--venv', type=Path, help='Virtual environment path used with --with-deps')
     parser.add_argument('--dry-run', action='store_true', help='Show paths without writes or downloads')
     parser.add_argument('--check', action='store_true', help='Check installed files and Python dependencies')
     args = parser.parse_args(argv)
     if args.list_agents:
         print(json.dumps(AGENTS, indent=2));return 0
+    if (args.no_deps or args.no_update) and not args.quick:
+        parser.error('--no-deps and --no-update are quick-mode options')
+    if args.quick:
+        args.agent = args.agent or ['codex']
+        if args.scope is None:
+            args.scope = 'project' if args.project is not None else 'user'
+        if not args.check:
+            args.with_deps = args.with_deps or not args.no_deps
+            args.update = args.update or not args.no_update
+    args.scope = args.scope or 'project'
+    args.project = args.project if args.project is not None else Path.cwd()
     if not args.agent:
         parser.error('--agent is required; use --list-agents')
     if args.dest and len(args.agent) != 1:

@@ -4,7 +4,7 @@
 
 **Scientific figures that remain readable at manuscript size.**
 
-[Quick install](#quick-install) · [Examples and validation](docs/validation.md) · [Download v0.10.0](https://github.com/Ychris12138/journal-figure-kit/releases/tag/v0.10.0)
+[Quick install](#quick-install) · [Examples and validation](docs/validation.md) · [Download v0.11.0](https://github.com/Ychris12138/journal-figure-kit/releases/tag/v0.11.0)
 
 [![Validate](https://github.com/Ychris12138/journal-figure-kit/actions/workflows/validate.yml/badge.svg)](https://github.com/Ychris12138/journal-figure-kit/actions/workflows/validate.yml)
 
@@ -14,70 +14,66 @@ Built for physics, chemistry and molecular simulation workflows, with installati
 
 ## Quick install
 
-### Short command: install the skill
+### One-click installation (recommended)
 
-With Node.js 22.20+ and Git available, run:
+Requires **Python 3.12+**. No manual file downloads, Git or Node.js are needed.
+
+**Windows PowerShell 5.1+:**
+
+```powershell
+irm https://raw.githubusercontent.com/Ychris12138/journal-figure-kit/main/install.ps1 | iex
+```
+
+**macOS, Linux, WSL or Git Bash:**
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/Ychris12138/journal-figure-kit/main/install.sh | bash
+```
+
+The default is **Codex, current-user installation, a separate Python environment and a ZIP backup before upgrades**. The script detects Python, installs plotting dependencies and the host adapter, and reuses the existing Codex skill location when present. Run it again to upgrade. Reload skills or start a new agent session afterwards.
+
+The commands fetch the latest bootstrap from `main`; each bootstrap pins a matching release of the Python installer. Installing Python itself is a prerequisite. Nothing changes your system Python or shell policy.
+
+<details>
+<summary>Choose another agent, change scope or check an installation</summary>
+
+For Claude Code, use:
+
+```powershell
+& ([scriptblock]::Create((irm 'https://raw.githubusercontent.com/Ychris12138/journal-figure-kit/main/install.ps1'))) --agent claude-code
+```
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/Ychris12138/journal-figure-kit/main/install.sh | bash -s -- --agent claude-code
+```
+
+| Agent | `--agent` | Invoke |
+|---|---|---|
+| Codex | `codex` | `$journal-matplotlib` |
+| Claude Code | `claude-code` | `/journal-matplotlib` |
+| Cursor | `cursor` | `/journal-matplotlib` |
+| Gemini CLI | `gemini` | Ask explicitly to use `journal-matplotlib` |
+| OpenCode | `opencode` | Ask explicitly to load `journal-matplotlib` |
+| VS Code Copilot | `copilot` | `/journal-matplotlib` |
+
+Use several names after `--agent` to install multiple adapters. Add `--scope project` for the current project, `--check` to check existing files/dependencies, `--dry-run` to preview paths, `--no-deps` to use your existing Python environment, or `--no-update` to refuse replacement. Checks do not install dependencies or update the skill.
+
+</details>
+
+<details>
+<summary>Other installation methods</summary>
+
+If you already have Node.js 22.20+, Git and a Python plotting environment:
 
 ```bash
 npx skills add Ychris12138/journal-figure-kit
 ```
 
-Follow the prompts to choose your agent. It installs into the current project by default. To choose Codex directly, append `-a codex`.
+This copies the generic skill without configuring Python or running this project's host-specific adapters and backup logic. From a cloned repository, `python install.py --quick` runs the full setup locally. Codex users can also ask `$skill-installer` to install `https://github.com/Ychris12138/journal-figure-kit/tree/v0.11.0/skills/journal-matplotlib`.
 
-This is the shortest route when you already have a Python plotting environment. The [Skills CLI](https://github.com/vercel-labs/skills#readme) copies the canonical skill; it does not configure Python dependencies or run this project's host-specific adapters and update backups. See the [comparison](docs/agents.md#short-install-with-the-skills-cli). Use the full setup below when those features are needed.
+</details>
 
-### Full setup: install the skill and Python dependencies
-
-With **Python 3.12** installed, paste one command into your terminal. No manual file download, saved installer, Git or Node.js is needed.
-
-**Windows · PowerShell**
-
-```powershell
-python -c "from urllib.request import urlopen; exec(urlopen('https://raw.githubusercontent.com/Ychris12138/journal-figure-kit/v0.10.0/install.py', timeout=60).read())" --agent codex --scope user --with-deps
-```
-
-**macOS / Linux · Terminal**
-
-```bash
-python3 -c "from urllib.request import urlopen; exec(urlopen('https://raw.githubusercontent.com/Ychris12138/journal-figure-kit/v0.10.0/install.py', timeout=60).read())" --agent codex --scope user --with-deps
-```
-
-The command runs the installer from the fixed **v0.10.0** tag in memory, downloads and verifies the skill ZIP, and creates a separate Python environment. Network access is required. Omit `--with-deps` if your project already has the plotting dependencies. Reload skills or start a new agent session after installation.
-
-| Agent | Replace `codex` with | How to invoke |
-|---|---|---|
-| Codex | `codex` | `$journal-matplotlib` |
-| Claude Code | `claude-code` | `/journal-matplotlib` |
-| Cursor | `cursor` | `/journal-matplotlib` |
-| Gemini CLI | `gemini` | Explicitly ask to use `journal-matplotlib` |
-| OpenCode | `opencode` | Explicitly ask to load `journal-matplotlib` |
-| VS Code Copilot | `copilot` | `/journal-matplotlib` |
-| Other agents with file/shell access | `generic` | Provide the installed `SKILL.md` path |
-
-Reuse the command above and change its final arguments:
-
-| Task | Argument change |
-|---|---|
-| Install several agents with one Python environment | Replace `--agent codex` with `--agent codex claude-code cursor` |
-| Install only in the current project | Replace `--scope user` with `--scope project` |
-| Upgrade an existing install, saving a ZIP backup | Append `--update` |
-| Check installed files and dependencies | Replace `--with-deps` with `--check` |
-| Preview destination paths | Replace `--with-deps` with `--dry-run` |
-
-The online command always fetches the installer, including for checks and previews. A preview does not download the skill/dependencies or write installation files. An update preserves local modifications in the backup, not by merging them into the new version.
-
-[Detailed options, local/offline installation and host compatibility](docs/agents.md). Installation and metadata are tested; live model sessions in every host have not been benchmarked.
-
-### Install through Codex
-
-You can also ask Codex to install directly from the repository:
-
-```text
-Use $skill-installer to install
-https://github.com/Ychris12138/journal-figure-kit/tree/v0.10.0/skills/journal-matplotlib
-```
-
-That route copies the skill without setting up Python dependencies. Use the terminal command with `--update --with-deps` to add its environment, or install the bundled `requirements.txt` in your chosen environment. Chinese palette previews need a CJK font such as Microsoft YaHei, Noto Sans CJK SC or SimHei.
+[Full installation and compatibility guide](docs/agents.md). Installation and metadata are tested; live model sessions in every host have not been benchmarked. Chinese palette previews need a CJK font such as Microsoft YaHei, Noto Sans CJK SC or SimHei.
 
 ## What it helps with
 
@@ -153,7 +149,7 @@ python examples/typography_proof.py --output build/typography
 python examples/layout_proof.py --output build/layout
 ```
 
-Use a new output directory for each proof run. Export helpers refuse implicit overwrites. The suite contains **55 plotting tests and 21 installer tests**; the [validation record](docs/validation.md) reports platform results and skips, five repaired synthetic collision cases, and 14 private real-figure regression pairs. Private artifacts are excluded from this repository. Model-level behavior prompts are listed separately and are not presented as executed benchmarks.
+Use a new output directory for each proof run. Export helpers refuse implicit overwrites. The suite contains **55 plotting tests, 26 installer tests and 8 shell-bootstrap tests**; the [validation record](docs/validation.md) reports platform results and skips, five repaired synthetic collision cases, and 14 private real-figure regression pairs. Private artifacts are excluded from this repository. Model-level behavior prompts are listed separately and are not presented as executed benchmarks.
 
 Use the Python helpers directly: [exact-size export and output QA](skills/journal-matplotlib/references/quality-tools.md), [typography controls](skills/journal-matplotlib/references/typography.md), and [collision checks and repairs](skills/journal-matplotlib/references/collisions.md).
 

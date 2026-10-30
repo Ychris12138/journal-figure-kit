@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.11.0 — 2026-10-30
+
+- Add recommended `irm .../install.ps1 | iex` and `curl -fsSL .../install.sh | bash` entrypoints to both language homepages.
+- Detect Python 3.12+ and delegate to a pinned Python backend; default to a user-level Codex install with isolated dependencies and backed-up upgrades.
+- Add shared `--quick`, `--no-deps` and `--no-update` handling while preserving direct-installer defaults and read-only checks.
+- Test native shell pipelines, interpreter detection, argument/path preservation, failures and local install/check behavior; preserve interactive PowerShell sessions on failure.
+- Include PowerShell/Bash scripts in release assets and checksums. WSL follows the Linux path but is not separately exercised.
+
 ## 0.10.0 — 2026-10-30
 
 - Publish the first normal GitHub Release, with language switching and quick installation at the top of both READMEs.

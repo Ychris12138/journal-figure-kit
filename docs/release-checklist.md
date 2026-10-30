@@ -1,6 +1,6 @@
 # Release notes and verification
 
-Project: **Journal Figure Kit**. Current release: `v0.10.0` (one-command online installation). First public candidate: `v0.9.0-rc.1`.
+Project: **Journal Figure Kit**. Current release: `v0.11.0` (PowerShell and Bash one-click installation). First public candidate: `v0.9.0-rc.1`.
 Repository: <https://github.com/Ychris12138/journal-figure-kit>.
 The installed skill folder and explicit invocation remain `journal-matplotlib`.
 
@@ -36,7 +36,7 @@ From a reviewed checkout, run:
 python tools/package_release.py --output build/dist
 ```
 
-This produces `journal-figure-kit-0.10.0-source.zip`, `journal-figure-kit-0.10.0-skill.zip`, `install.py`, `SHA256SUMS.txt`, a per-file manifest and package metadata. Checksums cover both ZIPs and the installer. The installable ZIP contains a `journal-matplotlib/` folder, its dependency list and the MIT license. `build/`, Git metadata, virtual environments and Python caches are excluded.
+This produces `journal-figure-kit-0.11.0-source.zip`, `journal-figure-kit-0.11.0-skill.zip`, `install.py`, `install.ps1`, `install.sh`, `SHA256SUMS.txt`, a per-file manifest and package metadata. Checksums cover both ZIPs and all three installer entry files. The installable ZIP contains a `journal-matplotlib/` folder, its dependency list and the MIT license. `build/`, Git metadata, virtual environments and Python caches are excluded.
 
 The public release is a normal GitHub Release. Version status does not certify journal compliance or untested host model behavior. Keep unverified journal sources and unsupported collision geometry explicit. Review the source tree and both archives before uploading; do not include private regression artifacts.
 
