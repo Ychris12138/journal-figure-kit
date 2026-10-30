@@ -16,33 +16,26 @@ The folder `journal-matplotlib` is created under the selected root. For Codex us
 
 ## Quick installation
 
-Download [install.py](https://github.com/Ychris12138/journal-figure-kit/releases/download/v0.10.0-rc.1/install.py), then use Python 3.12:
+Use Python 3.12 and paste this command into PowerShell; on macOS/Linux replace `python` with `python3`:
 
 ```bash
-python install.py --agent claude-code --scope user --with-deps
+python -c "from urllib.request import urlopen; exec(urlopen('https://raw.githubusercontent.com/Ychris12138/journal-figure-kit/v0.10.0/install.py', timeout=60).read())" --agent codex --scope user --with-deps
 ```
 
-The standalone script downloads the pinned `v0.10.0-rc.1` skill ZIP from this repository, verifies its SHA256 against the release checksum file, selects the host directory and creates a separate Python environment. These checks verify transfer integrity; the release and installer remain code you choose to trust. The script does not require Git, Node.js, administrator rights or an activated environment.
+No manual download or saved installer is required. The command fetches `install.py` from the fixed `v0.10.0` tag and runs it in memory. It then downloads the version-matched skill ZIP, verifies its SHA256 against the release checksum file, selects the host directory and optionally creates a Python environment. Network access is required. The installer and release are fetched from this project's GitHub repository; the ZIP checksum verifies transfer integrity, not independent publisher identity.
 
-From a cloned repository or extracted source ZIP, the same command uses the adjacent `skills/journal-matplotlib` directory and can install without network if `--with-deps` is omitted and your Python environment already has the dependencies.
+Change `--agent codex` to another host or several hosts, and use the same optional arguments as the local installer. Append `--update` to upgrade with a backup. Replace `--with-deps` with `--check` to check the install, or with `--dry-run` to preview destinations. The online bootstrap itself always fetches the installer; a preview fetches no skill archive or dependencies and writes no installation files. Downloads inside the installer retry transient failures up to three times, while permanent errors and invalid checksums stop installation.
+
+### Local and offline installation
+
+From an existing clone or extracted source ZIP, run the local installer. It uses the adjacent `skills/journal-matplotlib` directory and can work without network when you omit `--with-deps` and your selected environment already has the dependencies. You may also save [install.py](https://github.com/Ychris12138/journal-figure-kit/releases/download/v0.10.0/install.py) if a local script suits your workflow.
 
 ```bash
-# One host; default scope is the current project
-python install.py --agent cursor
-
-# Multiple hosts; no dependency installation unless requested
-python install.py --agent codex claude-code gemini --scope user
-
-# Explicit project and Python environment
+python install.py --agent claude-code --scope user
+python install.py --agent codex claude-code gemini --scope user --with-deps
 python install.py --agent opencode --project /path/to/project --with-deps --venv /path/to/figure-env
-
-# Preview target paths, without downloading or writing
 python install.py --agent copilot --scope user --dry-run
-
-# Update: back up the complete prior skill except Python caches
 python install.py --agent claude-code --scope user --update
-
-# Verify installed files and Python dependencies
 python install.py --agent claude-code --scope user --check
 ```
 

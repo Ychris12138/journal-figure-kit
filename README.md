@@ -4,7 +4,7 @@
 
 **Scientific figures that remain readable at manuscript size.**
 
-[Quick install](#quick-install) · [Examples and validation](docs/validation.md) · [Download v0.10.0-rc.1](https://github.com/Ychris12138/journal-figure-kit/releases/tag/v0.10.0-rc.1)
+[Quick install](#quick-install) · [Examples and validation](docs/validation.md) · [Download v0.10.0](https://github.com/Ychris12138/journal-figure-kit/releases/tag/v0.10.0)
 
 [![Validate](https://github.com/Ychris12138/journal-figure-kit/actions/workflows/validate.yml/badge.svg)](https://github.com/Ychris12138/journal-figure-kit/actions/workflows/validate.yml)
 
@@ -14,15 +14,23 @@ Built for physics, chemistry and molecular simulation workflows, with installati
 
 ## Quick install
 
-Download **[install.py](https://github.com/Ychris12138/journal-figure-kit/releases/download/v0.10.0-rc.1/install.py)**, then run with Python 3.12:
+With **Python 3.12** installed, paste one command into your terminal. No manual file download, saved installer, Git or Node.js is needed.
 
-```bash
-python install.py --agent codex --scope user --with-deps
+**Windows · PowerShell**
+
+```powershell
+python -c "from urllib.request import urlopen; exec(urlopen('https://raw.githubusercontent.com/Ychris12138/journal-figure-kit/v0.10.0/install.py', timeout=60).read())" --agent codex --scope user --with-deps
 ```
 
-Change `codex` to your agent from the table below. The standalone installer downloads the pinned release, verifies its checksum, installs the host-specific files and creates a separate Python environment. Git, Node.js, administrator rights and manual environment activation are not required. Omit `--with-deps` if your project already has the plotting dependencies.
+**macOS / Linux · Terminal**
 
-| Agent | `--agent` | How to invoke |
+```bash
+python3 -c "from urllib.request import urlopen; exec(urlopen('https://raw.githubusercontent.com/Ychris12138/journal-figure-kit/v0.10.0/install.py', timeout=60).read())" --agent codex --scope user --with-deps
+```
+
+The command runs the installer from the fixed **v0.10.0** tag in memory, downloads and verifies the skill ZIP, and creates a separate Python environment. Network access is required. Omit `--with-deps` if your project already has the plotting dependencies. Reload skills or start a new agent session after installation.
+
+| Agent | Replace `codex` with | How to invoke |
 |---|---|---|
 | Codex | `codex` | `$journal-matplotlib` |
 | Claude Code | `claude-code` | `/journal-matplotlib` |
@@ -32,35 +40,30 @@ Change `codex` to your agent from the table below. The standalone installer down
 | VS Code Copilot | `copilot` | `/journal-matplotlib` |
 | Other agents with file/shell access | `generic` | Provide the installed `SKILL.md` path |
 
-```bash
-# Install several agents, sharing one Python environment
-python install.py --agent codex claude-code cursor --scope user --with-deps
+Reuse the command above and change its final arguments:
 
-# Project-local installation (the default scope)
-python install.py --agent gemini --scope project
+| Task | Argument change |
+|---|---|
+| Install several agents with one Python environment | Replace `--agent codex` with `--agent codex claude-code cursor` |
+| Install only in the current project | Replace `--scope user` with `--scope project` |
+| Upgrade an existing install, saving a ZIP backup | Append `--update` |
+| Check installed files and dependencies | Replace `--with-deps` with `--check` |
+| Preview destination paths | Replace `--with-deps` with `--dry-run` |
 
-# Preview / update with backup / check the installation
-python install.py --agent codex --scope user --dry-run
-python install.py --agent codex --scope user --update
-python install.py --agent codex --scope user --check
-```
+The online command always fetches the installer, including for checks and previews. A preview does not download the skill/dependencies or write installation files. An update preserves local modifications in the backup, not by merging them into the new version.
 
-Existing installs are not replaced without `--update`. Updates save a ZIP backup and preserve a recorded Python environment. Use `--venv PATH` with `--with-deps` to choose an environment location, or `--dest PATH` for a custom skills directory. Reload skills or start a new agent session afterwards.
+[Detailed options, local/offline installation and host compatibility](docs/agents.md). Installation and metadata are tested; live model sessions in every host have not been benchmarked.
 
-**Compatibility means installation and metadata support.** Live model sessions in every host have not been benchmarked. Codex, Claude Code, Cursor and VS Code receive native explicit-use controls; Gemini/OpenCode retain an explicit-request instruction and their own activation policy. See the [agent guide](docs/agents.md) for directories, official sources and exact limitations.
+### Install through Codex
 
-### Install from source or with Codex
-
-Clone the repository or extract the source ZIP, then run the same `python install.py ...` command from its root; it uses the bundled skill without downloading it. Codex's existing installer also works:
+You can also ask Codex to install directly from the repository:
 
 ```text
 Use $skill-installer to install
-https://github.com/Ychris12138/journal-figure-kit/tree/v0.10.0-rc.1/skills/journal-matplotlib
+https://github.com/Ychris12138/journal-figure-kit/tree/v0.10.0/skills/journal-matplotlib
 ```
 
-That route copies the canonical skill and does not set up Python dependencies. Run the bundled `requirements.txt` in your chosen environment, or use this project's installer with `--update --with-deps`. For manual installation, copy the complete skill folder to the [host's native directory](docs/agents.md), not only `SKILL.md`.
-
-Chinese palette previews need a CJK font such as Microsoft YaHei, Noto Sans CJK SC or SimHei. Scientific test figures use DejaVu Sans.
+That route copies the skill without setting up Python dependencies. Use the terminal command with `--update --with-deps` to add its environment, or install the bundled `requirements.txt` in your chosen environment. Chinese palette previews need a CJK font such as Microsoft YaHei, Noto Sans CJK SC or SimHei.
 
 ## What it helps with
 
@@ -136,13 +139,13 @@ python examples/typography_proof.py --output build/typography
 python examples/layout_proof.py --output build/layout
 ```
 
-Use a new output directory for each proof run. Export helpers refuse implicit overwrites. The suite contains **55 plotting tests and 17 installer tests**; the [validation record](docs/validation.md) reports platform results and skips, five repaired synthetic collision cases, and 14 private real-figure regression pairs. Private artifacts are excluded from this repository. Model-level behavior prompts are listed separately and are not presented as executed benchmarks.
+Use a new output directory for each proof run. Export helpers refuse implicit overwrites. The suite contains **55 plotting tests and 21 installer tests**; the [validation record](docs/validation.md) reports platform results and skips, five repaired synthetic collision cases, and 14 private real-figure regression pairs. Private artifacts are excluded from this repository. Model-level behavior prompts are listed separately and are not presented as executed benchmarks.
 
 Use the Python helpers directly: [exact-size export and output QA](skills/journal-matplotlib/references/quality-tools.md), [typography controls](skills/journal-matplotlib/references/typography.md), and [collision checks and repairs](skills/journal-matplotlib/references/collisions.md).
 
 ## Scope and limitations
 
-This is a **release candidate**. Geometry screening is conservative, not a guarantee of zero collisions. Thin or transparent ink, arrows, custom artists, nested layouts and three-dimensional plots need additional review. Always inspect the exported PNG and an independently rendered PDF at final size. Palette checks do not prove universal accessibility; journal presets do not certify submission compliance.
+Geometry screening is conservative, not a guarantee of zero collisions. Thin or transparent ink, arrows, custom artists, nested layouts and three-dimensional plots need additional review. Always inspect the exported PNG and an independently rendered PDF at final size. Palette checks do not prove universal accessibility; journal presets do not certify submission compliance.
 
 Cross-agent installation and metadata are tested; live model behavior in every host has not been validated. See [validation](docs/validation.md) for the exact tested environment and remaining checks.
 

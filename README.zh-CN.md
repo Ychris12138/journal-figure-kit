@@ -4,7 +4,7 @@
 
 **让科研图在论文最终尺寸下，依然清楚可读。**
 
-[快速安装](#quick-install) · [效果与验证](docs/validation.md) · [下载 v0.10.0-rc.1](https://github.com/Ychris12138/journal-figure-kit/releases/tag/v0.10.0-rc.1)
+[快速安装](#quick-install) · [效果与验证](docs/validation.md) · [下载 v0.10.0](https://github.com/Ychris12138/journal-figure-kit/releases/tag/v0.10.0)
 
 [![Validate](https://github.com/Ychris12138/journal-figure-kit/actions/workflows/validate.yml/badge.svg)](https://github.com/Ychris12138/journal-figure-kit/actions/workflows/validate.yml)
 
@@ -14,17 +14,25 @@
 
 <a id="quick-install"></a>
 
-## 快速安装：下载后运行一条命令
+## 快速安装：复制一条命令
 
-先下载 **[安装器 install.py](https://github.com/Ychris12138/journal-figure-kit/releases/download/v0.10.0-rc.1/install.py)**，在文件所在目录用 Python 3.12 运行：
+准备好 **Python 3.12**，将下面的命令粘贴到终端即可。**不用手动下载或保存安装文件，也不需要 Git、Node.js。**
 
-```bash
-python install.py --agent codex --scope user --with-deps
+**Windows · PowerShell**
+
+```powershell
+python -c "from urllib.request import urlopen; exec(urlopen('https://raw.githubusercontent.com/Ychris12138/journal-figure-kit/v0.10.0/install.py', timeout=60).read())" --agent codex --scope user --with-deps
 ```
 
-把 `codex` 换成下表中的 agent 即可。安装器会下载固定版本、核对 SHA256、安装对应目录和调用设置，并创建独立 Python 环境。无需 Git、Node.js、管理员权限，也不用手动激活虚拟环境。已有科研环境和依赖时，去掉 `--with-deps`。
+**macOS / Linux · 终端**
 
-| 使用的工具 | `--agent` 参数 | 安装后的调用方式 |
+```bash
+python3 -c "from urllib.request import urlopen; exec(urlopen('https://raw.githubusercontent.com/Ychris12138/journal-figure-kit/v0.10.0/install.py', timeout=60).read())" --agent codex --scope user --with-deps
+```
+
+命令从固定的 **v0.10.0** 标签获取安装器并在内存中运行，自动下载和校验 skill，然后创建独立 Python 环境。需要联网；已有科研环境和依赖时，去掉 `--with-deps`。安装后重新加载 skills 或开启新会话。
+
+| 使用的工具 | 将命令中的 `codex` 换成 | 安装后的调用方式 |
 |---|---|---|
 | Codex | `codex` | `$journal-matplotlib` |
 | Claude Code | `claude-code` | `/journal-matplotlib` |
@@ -34,60 +42,36 @@ python install.py --agent codex --scope user --with-deps
 | VS Code Copilot | `copilot` | `/journal-matplotlib` |
 | 其他能读文件、运行 Python 的 agent | `generic` | 提供已安装 `SKILL.md` 的完整路径 |
 
-例如 Claude Code 用户：
+复用上面的命令，调整末尾参数即可：
 
-```bash
-python install.py --agent claude-code --scope user --with-deps
-```
+| 想做什么 | 修改方法 |
+|---|---|
+| 同时安装多个 agent，共用 Python 环境 | 将 `--agent codex` 换为 `--agent codex claude-code cursor` |
+| 只给当前项目安装 | 将 `--scope user` 换为 `--scope project` |
+| 升级已有安装，并保存旧版 ZIP 备份 | 末尾追加 `--update` |
+| 检查已安装文件和依赖 | 将 `--with-deps` 换为 `--check` |
+| 预览安装目录 | 将 `--with-deps` 换为 `--dry-run` |
 
-同时安装多个工具，共用一个 Python 环境：
+在线命令即使检查或预览也会获取安装器；预览不会下载 skill/依赖或写入安装文件。升级时，自定义修改保存在备份 ZIP 中，不会自动合并到新版。
 
-```bash
-python install.py --agent codex claude-code cursor --scope user --with-deps
-```
+[完整参数、本地/离线安装和适配说明](docs/agents.md)。已验证安装和调用元数据；其他 agent 的实际模型会话尚未逐一测试。
 
-只给当前项目安装：
+### 直接让 Codex 安装
 
-```bash
-python install.py --agent gemini --scope project
-```
-
-查看路径、升级和检查：
-
-```bash
-python install.py --agent codex --scope user --dry-run
-python install.py --agent codex --scope user --update
-python install.py --agent codex --scope user --check
-```
-
-- `--scope user`：当前用户的所有项目可用；默认 `project` 只安装在当前项目。
-- `--with-deps`：建立独立 venv 并安装作图依赖，不修改系统 Python；可配合 `--venv 路径` 指定位置。
-- `--update`：先保存旧版 ZIP 备份，再替换；保留已有 Python 环境记录。未指定时拒绝覆盖。
-- `--check`：核对安装文件和依赖。`--dry-run` 只显示路径，不下载、不写文件。
-- `--dest 路径`：指定自定义 skills 父目录，每次限一个 agent。
-
-安装后重新加载 skills 或开启新会话。Gemini CLI 可用 `/skills list` 和 `/skills reload`；VS Code 可在 Open Customizations → Skills 中检查。
-
-**适配验证的是文件、目录和调用元数据，不代表已经在所有工具中跑过真实模型会话。** Codex、Claude Code、Cursor、VS Code 有各自的显式调用控制；Gemini/OpenCode 保留“用户明确要求才使用”的指令，并遵循工具本身的加载机制。[适配矩阵、官方依据与边界](docs/agents.md)
-
-### 从源码或 Codex 安装
-
-克隆仓库或解压源码 ZIP 后，在根目录运行同一条 `python install.py ...` 命令即可使用本地资源。也可在 Codex 中说：
+也可以在 Codex 中说：
 
 ```text
 使用 $skill-installer 安装：
-https://github.com/Ychris12138/journal-figure-kit/tree/v0.10.0-rc.1/skills/journal-matplotlib
+https://github.com/Ychris12138/journal-figure-kit/tree/v0.10.0/skills/journal-matplotlib
 ```
 
-Codex 自带安装器只复制 skill，不安装 Python 依赖。可在现有环境中安装 skill 内的 `requirements.txt`，或用本项目安装器执行 `--update --with-deps`。手动安装时应复制完整目录，目标路径见[适配说明](docs/agents.md)。
-
-中文色卡需要 Microsoft YaHei、Noto Sans CJK SC 或 SimHei 等字体；科学图测试采用 DejaVu Sans。
+这个入口会复制 skill，不配置 Python 依赖。需要独立环境时，使用上面的终端命令并追加 `--update`；或者在已有科研环境中安装 skill 内的 `requirements.txt`。中文色卡需要 Microsoft YaHei、Noto Sans CJK SC 或 SimHei 等字体。
 
 ### 常见安装问题
 
-- **找不到 skill**：先重新加载或开启新会话，用 `--dry-run` 查看目标目录，核对是否安装到了另一个项目。检查是否有同名旧副本。
-- **提示缺少 Python 包**：运行 `--check`；需要安装依赖时加 `--update --with-deps`。agent 应使用安装器输出、并记录在 `local_runtime.json` 中的 Python 路径。
-- **想升级**：下载新版本的 `install.py`，使用相同 agent 和安装范围，加 `--update`。自定义修改保存在安装目录旁的 `.journal-figure-kit-backups` ZIP 中，不会自动合并到新版。
+- **找不到 skill**：重新加载或开启新会话，用 `--dry-run` 查看目标目录，核对是否装到了另一个项目，以及是否有同名旧副本。
+- **缺少 Python 包**：运行 `--check`；需要配置依赖时，使用安装命令并追加 `--update`。agent 应使用 `local_runtime.json` 中记录的 Python 路径。
+- **网络中断**：再次执行同一命令。安装器对临时下载错误最多尝试三次；无法联网时，可从已有源码运行本地安装器。
 
 ## 解决哪些问题
 
@@ -160,13 +144,13 @@ python examples/typography_proof.py --output build/typography
 python examples/layout_proof.py --output build/layout
 ```
 
-每次示例运行使用新的输出目录；导出工具默认拒绝覆盖。测试集包含 **55 项作图测试与 17 项安装器测试**，另有五类修复后的合成遮挡案例和 14 对私有真实科研图回归；平台结果和跳过项见验证记录。实际科研图不随仓库发布。模型行为测试提示单独列出，未冒充已经执行的模型基准。
+每次示例运行使用新的输出目录；导出工具默认拒绝覆盖。测试集包含 **55 项作图测试与 21 项安装器测试**，另有五类修复后的合成遮挡案例和 14 对私有真实科研图回归；平台结果和跳过项见验证记录。实际科研图不随仓库发布。模型行为测试提示单独列出，未冒充已经执行的模型基准。
 
 [完整验证记录](docs/validation.md) · [尺寸与导出工具](skills/journal-matplotlib/references/quality-tools.md) · [字号调整](skills/journal-matplotlib/references/typography.md) · [防遮挡用法](skills/journal-matplotlib/references/collisions.md)
 
 ## 边界与贡献
 
-当前为发布候选版。自动筛查不能证明完全没有遮挡；细线、低透明度数据、箭头、自定义对象、嵌套布局和三维图需要额外审阅。交付前仍应查看最终尺寸 PNG 和独立渲染 PDF。色觉检查不保证所有人均可辨识，期刊预设也不等于投稿合规认证。
+自动筛查不能证明完全没有遮挡；细线、低透明度数据、箭头、自定义对象、嵌套布局和三维图需要额外审阅。交付前仍应查看最终尺寸 PNG 和独立渲染 PDF。色觉检查不保证所有人均可辨识，期刊预设也不等于投稿合规认证。
 
 欢迎提交带小型合成复现脚本的 issue，注明 Python/Matplotlib 版本、最终图幅、预期结果与必要的 PNG/PDF；请去除私有数据。修复应保留科学含义，行为问题附带针对性测试。
 

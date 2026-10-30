@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.10.0 — 2026-10-30
+
+- Publish the first normal GitHub Release, with language switching and quick installation at the top of both READMEs.
+- Add one-command online installation for Windows, macOS and Linux without manually downloading or saving an installer.
+- Support in-memory and stdin entrypoints without relying on `__file__` or an unrelated current-directory skill.
+- Retry transient skill-download failures up to three times; preserve existing checksum, backup and explicit-update behavior.
+- Add four installer tests; the suite now contains 76 tests. External host model sessions remain outside the executed validation scope.
+
 ## 0.10.0-rc.1 — 2026-10-30
 
 - Expand the Chinese README with a prominent entry, agent-specific commands, setup, update and troubleshooting guidance.

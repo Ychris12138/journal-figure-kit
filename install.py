@@ -5,6 +5,7 @@ import argparse
 from contextlib import contextmanager
 from datetime import datetime, timezone
 import hashlib
+import http.client
 import io
 import json
 import os
@@ -15,12 +16,14 @@ import stat
 import subprocess
 import sys
 import tempfile
+import time
+import urllib.error
 import urllib.request
 import uuid
 import venv
 import zipfile
 
-VERSION = '0.10.0-rc.1'
+VERSION = '0.10.0'
 NAME = 'journal-matplotlib'
 REPO = 'https://github.com/Ychris12138/journal-figure-kit'
 RECEIPT = '.journal-figure-kit-install.json'
@@ -106,17 +109,34 @@ def extract_skill(data, root):
 
 def download(url, maximum):
     request = urllib.request.Request(url, headers={'User-Agent': f'JournalFigureKit/{VERSION}'})
-    with urllib.request.urlopen(request, timeout=60) as response:
-        result = response.read(maximum+1)
-    if len(result) > maximum:
-        raise ValueError('Download exceeds size limit')
-    return result
+    for attempt in range(3):
+        try:
+            with urllib.request.urlopen(request, timeout=60) as response:
+                result = response.read(maximum+1)
+            if len(result) > maximum:
+                raise ValueError('Download exceeds size limit')
+            return result
+        except urllib.error.HTTPError as error:
+            if error.code != 429 and not 500 <= error.code < 600:
+                raise
+            if attempt == 2:
+                raise
+        except (urllib.error.URLError, TimeoutError, ConnectionError, http.client.IncompleteRead):
+            if attempt == 2:
+                raise
+        print(f'Download interrupted; retrying ({attempt+2}/3).', file=sys.stderr)
+        time.sleep(attempt+1)
 
 
 @contextmanager
 def source_tree(explicit=None):
-    local = Path(explicit).expanduser().resolve() if explicit else Path(__file__).resolve().parent/'skills'/NAME
-    if explicit or local.is_dir():
+    # python -c has no __file__; stdin sets it to <stdin>. Neither should
+    # accidentally treat an unrelated current-directory skill as its payload.
+    script_file = globals().get('__file__')
+    local = Path(explicit).expanduser().resolve() if explicit else None
+    if local is None and script_file and not str(script_file).startswith('<'):
+        local = Path(script_file).resolve().parent/'skills'/NAME
+    if explicit or (local is not None and local.is_dir()):
         validate_source(local)
         yield local
         return
@@ -306,6 +326,6 @@ if __name__ == '__main__':
         raise SystemExit('Python 3.10+ is required; Python 3.12 is the tested target.')
     try:
         raise SystemExit(main())
-    except (OSError, ValueError, subprocess.SubprocessError, zipfile.BadZipFile) as error:
+    except (OSError, ValueError, subprocess.SubprocessError, zipfile.BadZipFile, http.client.HTTPException) as error:
         print(f'Installation failed: {error}', file=sys.stderr)
         raise SystemExit(1)

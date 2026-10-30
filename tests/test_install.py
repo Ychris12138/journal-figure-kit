@@ -1,7 +1,7 @@
 """Real filesystem installer tests; no agent accounts or home directories used."""
 from pathlib import Path
 import contextlib,hashlib,importlib.util,io,json,os,stat,sys,tempfile,unittest,zipfile
-from unittest.mock import patch
+from unittest.mock import MagicMock,patch
 ROOT=Path(__file__).resolve().parents[1]
 spec=importlib.util.spec_from_file_location('jfk_install',ROOT/'install.py')
 installer=importlib.util.module_from_spec(spec);spec.loader.exec_module(installer)
@@ -123,6 +123,51 @@ class InstallTests(unittest.TestCase):
         with patch.object(installer,'__file__',str(fake)),patch.object(installer,'download',side_effect=[(hashlib.sha256(raw).hexdigest()+'  '+asset+'\n').encode(),raw]):
             with installer.source_tree() as source:
                 self.assertEqual((source/'VERSION').read_text().strip(),installer.VERSION)
+
+    def test_memory_and_stdin_bootstrap_use_pinned_release(self):
+        data=io.BytesIO()
+        with zipfile.ZipFile(data,'w') as z:
+            for p in installer.files(SOURCE):z.write(p,installer.NAME+'/'+p.relative_to(SOURCE).as_posix())
+        raw=data.getvalue();asset=f'journal-figure-kit-{installer.VERSION}-skill.zip'
+        checksums=(hashlib.sha256(raw).hexdigest()+'  '+asset+'\n').encode()
+        for filename in (None,'<stdin>'):
+            with self.subTest(filename=filename),patch.object(installer,'__file__',filename),patch.object(installer,'download',side_effect=[checksums,raw]) as network:
+                with installer.source_tree() as source:
+                    self.assertNotEqual(source,SOURCE)
+                    self.assertEqual((source/'VERSION').read_text().strip(),installer.VERSION)
+                self.assertEqual(network.call_count,2)
+
+    def test_memory_and_stdin_entrypoints_install_without_script_file(self):
+        source=(ROOT/'install.py').read_text(encoding='utf-8')
+        for mode in ('memory','stdin'):
+            args=[sys.executable,'-c',source] if mode=='memory' else [sys.executable,'-']
+            dest=self.root/mode
+            args+=['--agent','claude-code','--dest',str(dest),'--source',str(SOURCE)]
+            with self.subTest(mode=mode):
+                result=installer.subprocess.run(args,input=source if mode=='stdin' else None,capture_output=True,text=True,cwd=self.root)
+                self.assertEqual(result.returncode,0,result.stderr)
+                self.assertEqual((dest/installer.NAME/'VERSION').read_text().strip(),installer.VERSION)
+                self.assertFalse((self.root/'install.py').exists())
+
+    def test_transient_download_errors_retry_with_a_limit(self):
+        response=MagicMock();response.__enter__.return_value.read.return_value=b'ok'
+        errors=[installer.http.client.RemoteDisconnected('closed'),installer.urllib.error.HTTPError('https://example.invalid',503,'busy',{},None)]
+        with patch.object(installer.urllib.request,'urlopen',side_effect=errors+[response]) as network,patch.object(installer.time,'sleep') as pause:
+            self.assertEqual(installer.download('https://example.invalid',100),b'ok')
+            self.assertEqual(network.call_count,3);self.assertEqual(pause.call_count,2)
+        with patch.object(installer.urllib.request,'urlopen',side_effect=TimeoutError('timeout')) as network,patch.object(installer.time,'sleep'),self.assertRaises(TimeoutError):
+            installer.download('https://example.invalid',100)
+        self.assertEqual(network.call_count,3)
+
+    def test_permanent_download_failures_are_not_retried(self):
+        error=installer.urllib.error.HTTPError('https://example.invalid',404,'missing',{},None)
+        with patch.object(installer.urllib.request,'urlopen',side_effect=error) as network,self.assertRaises(installer.urllib.error.HTTPError):
+            installer.download('https://example.invalid',100)
+        self.assertEqual(network.call_count,1)
+        response=MagicMock();response.__enter__.return_value.read.return_value=b'too long'
+        with patch.object(installer.urllib.request,'urlopen',return_value=response) as network,self.assertRaises(ValueError):
+            installer.download('https://example.invalid',2)
+        self.assertEqual(network.call_count,1)
 
     def test_check_detects_modified_install(self):
         target=self.target();installer.install_one(SOURCE,target,'codex',python=sys.executable)

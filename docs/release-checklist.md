@@ -1,6 +1,6 @@
 # Release notes and verification
 
-Project: **Journal Figure Kit**. Current candidate: `v0.10.0-rc.1` (cross-agent installation). First public candidate: `v0.9.0-rc.1`.
+Project: **Journal Figure Kit**. Current release: `v0.10.0` (one-command online installation). First public candidate: `v0.9.0-rc.1`.
 Repository: <https://github.com/Ychris12138/journal-figure-kit>.
 The installed skill folder and explicit invocation remain `journal-matplotlib`.
 
@@ -14,6 +14,7 @@ The installed skill folder and explicit invocation remain `journal-matplotlib`.
 - Rendered collision screening, bounded legend/note repair and reserved-region recipes.
 - Complete standalone panels with preserved scientific encodings.
 - Source and skill ZIPs with SHA256 checksums; no private figures, source data or local paths.
+- One-command online bootstrap without a manually downloaded file; Windows and macOS/Linux commands in both READMEs.
 - Standalone `install.py`, host-specific directory/metadata adaptation and optional isolated Python setup.
 - Installation previews/checks, explicit updates with ZIP backups, and a shared runtime for multiple selected agents.
 
@@ -35,9 +36,9 @@ From a reviewed checkout, run:
 python tools/package_release.py --output build/dist
 ```
 
-This produces `journal-figure-kit-0.10.0-rc.1-source.zip`, `journal-figure-kit-0.10.0-rc.1-skill.zip`, `install.py`, `SHA256SUMS.txt`, a per-file manifest and package metadata. Checksums cover both ZIPs and the installer. The installable ZIP contains a `journal-matplotlib/` folder, its dependency list and the MIT license. `build/`, Git metadata, virtual environments and Python caches are excluded.
+This produces `journal-figure-kit-0.10.0-source.zip`, `journal-figure-kit-0.10.0-skill.zip`, `install.py`, `SHA256SUMS.txt`, a per-file manifest and package metadata. Checksums cover both ZIPs and the installer. The installable ZIP contains a `journal-matplotlib/` folder, its dependency list and the MIT license. `build/`, Git metadata, virtual environments and Python caches are excluded.
 
-The public release is a prerelease, not a claim of journal certification. Keep unverified journal sources and unsupported collision geometry explicit. Review the source tree and both archives before uploading; do not include private regression artifacts.
+The public release is a normal GitHub Release. Version status does not certify journal compliance or untested host model behavior. Keep unverified journal sources and unsupported collision geometry explicit. Review the source tree and both archives before uploading; do not include private regression artifacts.
 
 ## License status
 

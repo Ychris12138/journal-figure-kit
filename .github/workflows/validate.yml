@@ -32,7 +32,7 @@ jobs:
         run: python -m unittest discover -s tests -v
       - name: Render synthetic layout proof
         run: python examples/layout_proof.py --output build/layout
-      - name: Package release candidate
+      - name: Package release
         run: python tools/package_release.py --output build/dist
       - name: Install adapters in an isolated project
         run: python install.py --agent codex claude-code cursor gemini opencode copilot --scope project --project build/install-smoke
