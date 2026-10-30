@@ -4,6 +4,8 @@
 
 [English](README.md) · [下载 v0.9.0-rc.1](https://github.com/Ychris12138/journal-figure-kit/releases/tag/v0.9.0-rc.1) · [效果与验证](docs/validation.md)
 
+[![Validate](https://github.com/Ychris12138/journal-figure-kit/actions/workflows/validate.yml/badge.svg)](https://github.com/Ychris12138/journal-figure-kit/actions/workflows/validate.yml)
+
 面向物理、化学和分子模拟的 Codex 作图 skill 与 Python 工具集：先确认配色和物理含义，再按最终尺寸构图，检查字号、遮挡和实际导出文件，交付可编辑 PDF 与高分辨率 PNG。
 
 项目名是 **Journal Figure Kit**；安装后的调用名保留 **`$journal-matplotlib`**。

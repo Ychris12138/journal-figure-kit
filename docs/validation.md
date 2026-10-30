@@ -1,5 +1,7 @@
 # 0.9.0-rc.1 验证记录
 
+GitHub 首次上传验证：Windows 与 Ubuntu 的依赖安装、55 项测试、布局示例导出和打包均通过，见 [Actions run 41015861368](https://github.com/Ychris12138/journal-figure-kit/actions/runs/41015861368)。另通过 `skill-installer` 从公开仓库下载到独立目录，核对全部 31 个 skill 文件，并运行遮挡检测/修复。以下早期候选记录保留历史状态，最新验证以本段及 Actions 为准。
+
 发布前补验（2026-10-30）：创建独立 Windows / Python 3.12 venv，按 README 从 `requirements.txt` 成功安装依赖，清除 `PYTHONPATH` 后完整 **55 项测试通过**。未复用原科研环境的导入路径；pip 可复用下载缓存。GitHub Actions 定义 Windows/Linux 两个平台的测试与合成图导出，运行状态以仓库 Actions 为准。下文“尚未做干净环境安装”为较早本地候选的历史状态，已由本条更新。
 
 2026-10-30 防遮挡更新：完整回归 **55 项通过**（原 37 项 + 18 项布局测试）。新测试覆盖图例后方被遮住的曲线、线段/点/柱/误差带、NaN 间断、画布外文字、热图有意覆盖、子图重排、无解恢复、同名图例对象身份、完整图例条目、异常后的可见性/渲染器恢复、字号变更重检、手动布局边界和导出 warn/error/off 模式。

@@ -4,6 +4,8 @@
 
 [简体中文](README.zh-CN.md) · [Download v0.9.0-rc.1](https://github.com/Ychris12138/journal-figure-kit/releases/tag/v0.9.0-rc.1) · [Examples and validation](docs/validation.md)
 
+[![Validate](https://github.com/Ychris12138/journal-figure-kit/actions/workflows/validate.yml/badge.svg)](https://github.com/Ychris12138/journal-figure-kit/actions/workflows/validate.yml)
+
 A Codex skill and Python toolkit for publication figures in Matplotlib. Confirm colors and their meaning, compose at the final physical size, check typography and collisions, and export an editable PDF with a high-resolution PNG.
 
 Built for physics, chemistry and molecular simulation workflows. The installed skill keeps the invocation name **`$journal-matplotlib`**.
